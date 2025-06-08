@@ -45,7 +45,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Dr: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        jLabel2.setText("Dr: XXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         jButton1.setBackground(new java.awt.Color(141, 175, 45));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
