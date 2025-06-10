@@ -58,16 +58,19 @@ public class tabla_consulta extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(100, 205, 111));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Lunes", "Martes", "Miercoles", "Jueves", "viernes", "Sabado", "Domingo"
+                "Dia", "Hora", "Nombre del paciente", "Cedula del paciente", "Fecha de la consulta"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -77,13 +80,13 @@ public class tabla_consulta extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(237, 249, 239));
         jButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(100, 205, 111));
-        jButton1.setText("Agregar");
+        jButton1.setText("Agregar cita");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(237, 249, 239));
         jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
