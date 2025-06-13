@@ -8,7 +8,7 @@ public class conexionSQL {
     public Connection conectar(){
         try {
             // Esto de la contraseña y usuario estan con el xampp por defecto, si la base la tienen en un usuario especifico pues la ponen.
-            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
+            cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL", "medicontrol", "bata31@");
             System.out.println("Conexion exitosa");
         } catch (Exception e) {
             System.out.println("Error de conexion" + e);
