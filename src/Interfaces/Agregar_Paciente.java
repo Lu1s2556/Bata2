@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import javax.swing.UIManager;
 /**
  *
  * @author gordo
@@ -13,7 +14,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     /**
      * Creates new form Agregar_Paciente
      */
-    public Agregar_Paciente() {
+    public Agregar_Paciente() {        
         initComponents();
     }
 
@@ -26,6 +27,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup_SexCheck = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -43,12 +45,12 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         direccion_txt = new javax.swing.JTextField();
         nombre_txt = new javax.swing.JTextField();
         ci_txt = new javax.swing.JTextField();
-        nacimiento_txt = new javax.swing.JTextField();
         mujer_chk = new javax.swing.JCheckBox();
         hombre_chk = new javax.swing.JCheckBox();
         agr_paciente_btn = new javax.swing.JButton();
         gruposangre_box = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        nacimiento_dte = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,7 +113,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, 30));
 
         apellido_txt.setBackground(new java.awt.Color(255, 255, 255));
         apellido_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -167,22 +169,25 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         });
         jPanel1.add(ci_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 160, -1));
 
-        nacimiento_txt.setBackground(new java.awt.Color(255, 255, 255));
-        nacimiento_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        nacimiento_txt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nacimiento_txtActionPerformed(evt);
-            }
-        });
-        jPanel1.add(nacimiento_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 160, -1));
-
+        buttonGroup_SexCheck.add(mujer_chk);
         mujer_chk.setForeground(new java.awt.Color(0, 0, 0));
         mujer_chk.setText("Mujer");
-        jPanel1.add(mujer_chk, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 70, -1));
+        mujer_chk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mujer_chkActionPerformed(evt);
+            }
+        });
+        jPanel1.add(mujer_chk, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 80, -1));
 
+        buttonGroup_SexCheck.add(hombre_chk);
         hombre_chk.setForeground(new java.awt.Color(0, 0, 0));
         hombre_chk.setText("Hombre");
-        jPanel1.add(hombre_chk, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 70, -1));
+        hombre_chk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hombre_chkActionPerformed(evt);
+            }
+        });
+        jPanel1.add(hombre_chk, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 80, -1));
 
         agr_paciente_btn.setBackground(new java.awt.Color(204, 204, 204));
         agr_paciente_btn.setForeground(new java.awt.Color(0, 0, 0));
@@ -204,6 +209,9 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Grupo sanguineo:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, 20));
+
+        nacimiento_dte.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(nacimiento_dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,13 +251,17 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ci_txtActionPerformed
 
-    private void nacimiento_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nacimiento_txtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nacimiento_txtActionPerformed
-
     private void agr_paciente_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agr_paciente_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_agr_paciente_btnActionPerformed
+
+    private void hombre_chkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hombre_chkActionPerformed
+        
+    }//GEN-LAST:event_hombre_chkActionPerformed
+
+    private void mujer_chkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mujer_chkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mujer_chkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +289,9 @@ public class Agregar_Paciente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Agregar_Paciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        try { 
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"); 
+        } catch(Exception ignored){}
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -289,6 +304,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agr_paciente_btn;
     public javax.swing.JTextField apellido_txt;
+    private javax.swing.ButtonGroup buttonGroup_SexCheck;
     public javax.swing.JTextField ci_txt;
     public javax.swing.JTextField direccion_txt;
     public javax.swing.JTextField email_txt;
@@ -307,7 +323,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JCheckBox mujer_chk;
-    public javax.swing.JTextField nacimiento_txt;
+    public com.toedter.calendar.JDateChooser nacimiento_dte;
     public javax.swing.JTextField nombre_txt;
     public javax.swing.JTextField telefono_txt;
     // End of variables declaration//GEN-END:variables
