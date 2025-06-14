@@ -4,16 +4,19 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
+import conexion.*;
+import java.sql.*;
 /**
  *
  * @author gordo
  */
 public class Agregar_Paciente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Agregar_Paciente
-     */
+    conexionSQL con = new conexionSQL();
+    Connection cn = con.conectar();
     public Agregar_Paciente() {        
         initComponents();
     }
@@ -211,6 +214,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, 20));
 
         nacimiento_dte.setBackground(new java.awt.Color(204, 255, 204));
+        nacimiento_dte.setDateFormatString("yyyy-MM-dd");
         jPanel1.add(nacimiento_dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,7 +256,46 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     }//GEN-LAST:event_ci_txtActionPerformed
 
     private void agr_paciente_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agr_paciente_btnActionPerformed
-        // TODO add your handling code here:
+        String cedula = ci_txt.getText();
+        String nombre = nombre_txt.getText();
+        String apellido = apellido_txt.getText();
+        String grupoS = gruposangre_box.getSelectedItem().toString();
+        String telefono = telefono_txt.getText();
+        String direccion = direccion_txt.getText();
+        String email = email_txt.getText();
+        String fecha = ((JTextField)nacimiento_dte.getDateEditor().getUiComponent()).getText();
+        String sexo = null;
+        
+        if(hombre_chk.isSelected()) {
+            sexo = "Hombre";
+        } else if (mujer_chk.isSelected()) {
+            sexo = "Mujer";
+        } else {
+            JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR EL SEXO");
+        }
+        
+        if(nombre.isEmpty()||apellido.isEmpty()||email.isEmpty()||cedula.isEmpty()||telefono.isEmpty()||direccion.isEmpty()||fecha.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR LOS DATOS");
+        }else{
+            Pacientes p = new Pacientes(cedula, nombre, apellido, sexo, grupoS, telefono, direccion, email, Date.valueOf(fecha));
+            try {
+                PreparedStatement ps = cn.prepareStatement("INSERT INTO paciente(cedula, nombre, apellido, sexo, `grupo sanguineo`, telefono, direccion, email, `fecha de nacimiento`) VALUES (?,?,?,?,?,?,?,?,?)");
+                ps.setString(1, cedula);
+                ps.setString(2, nombre);
+                ps.setString(3, apellido);
+                ps.setString(4, sexo);
+                ps.setString(5, grupoS);
+                ps.setString(6, telefono);
+                ps.setString(7, direccion);
+                ps.setString(8, email);
+                ps.setDate(9, p.getFecha());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "SE PUDO AGREGAR EL PACIENTE EXITOSAMENTE!");
+            } catch (Exception e) {
+                // JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE" + e);
+                System.out.println("error: " + e);
+            }
+        } 
     }//GEN-LAST:event_agr_paciente_btnActionPerformed
 
     private void hombre_chkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hombre_chkActionPerformed
