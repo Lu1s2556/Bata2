@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfaces;
 
 import javax.swing.JOptionPane;
@@ -9,17 +5,70 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import conexion.*;
 import java.sql.*;
-/**
- *
- * @author gordo
- */
+
 public class Agregar_Paciente extends javax.swing.JFrame {
 
     conexionSQL con = new conexionSQL();
     Connection cn = con.conectar();
+    
     public Agregar_Paciente() {        
         initComponents();
     }
+    
+    // Ver informacion sin modificar
+    public Agregar_Paciente (String cedula) {
+        initComponents();
+        cargarDatos(cedula);
+        jLabel1.setText("Paciente");
+        agr_paciente_btn.setVisible(false);
+        soloLectura();
+    }
+    
+    private void cargarDatos(String cedula){
+        DAOPacientes pacientesDAO = new DAOPacientes(cn);
+        Pacientes paciente = pacientesDAO.obtenerPaciente(cedula);
+        
+        if (paciente != null) {
+            // Asignar datos a los campos de la interfaz
+            ci_txt.setText(paciente.getCedula());
+            nombre_txt.setText(paciente.getNombre());
+            apellido_txt.setText(paciente.getApellido());
+            telefono_txt.setText(paciente.getTelefono());
+            direccion_txt.setText(paciente.getDireccion());
+            email_txt.setText(paciente.getEmail());
+            gruposangre_box.setSelectedItem(paciente.getGrupoS());
+            nacimiento_dte.setDate(paciente.getFecha());
+            
+            // Asignar sexo con los checkbox
+            hombre_chk.setSelected("Hombre".equals(paciente.getSexo()));
+            mujer_chk.setSelected("Mujer".equals(paciente.getSexo()));
+        
+            soloLectura();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+        }
+    }
+    
+    private void soloLectura() {
+        // Deshabilitar edición en los JTextField
+        ci_txt.setEditable(false);
+        nombre_txt.setEditable(false);
+        apellido_txt.setEditable(false);
+        telefono_txt.setEditable(false);
+        direccion_txt.setEditable(false);
+        email_txt.setEditable(false);
+
+        // Deshabilitar interacción en JComboBox y JDateChooser
+        gruposangre_box.setEnabled(false);
+        nacimiento_dte.setEnabled(false);
+
+        // Deshabilitar selección en los JCheckBox
+        hombre_chk.setEnabled(false);
+        mujer_chk.setEnabled(false);
+
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,6 +305,40 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     }//GEN-LAST:event_ci_txtActionPerformed
 
     private void agr_paciente_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agr_paciente_btnActionPerformed
+        
+        String cedula = ci_txt.getText();
+        String nombre = nombre_txt.getText();
+        String apellido = apellido_txt.getText();
+        String grupoS = gruposangre_box.getSelectedItem().toString();
+        String telefono = telefono_txt.getText();
+        String direccion = direccion_txt.getText();
+        String email = email_txt.getText();
+        String fecha = ((JTextField) nacimiento_dte.getDateEditor().getUiComponent()).getText();
+        String sexo = hombre_chk.isSelected() ? "Hombre" : mujer_chk.isSelected() ? "Mujer" : null;
+
+        if (sexo == null) {
+            JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR EL SEXO");
+            return;
+        }
+
+        if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || cedula.isEmpty() || telefono.isEmpty() || direccion.isEmpty() || fecha.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR LOS DATOS");
+            return;
+        }
+
+        // Creación del objeto Pacientes
+        Pacientes p = new Pacientes(cedula, nombre, apellido, sexo, grupoS, telefono, direccion, email, Date.valueOf(fecha));
+
+        // Llamada al DAO
+        DAOPacientes dao = new DAOPacientes(cn);
+        if (dao.agregarPaciente(p)) {
+            JOptionPane.showMessageDialog(null, "SE PUDO AGREGAR EL PACIENTE EXITOSAMENTE!");
+        } else {
+            JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE");
+        }
+
+        
+        /*
         String cedula = ci_txt.getText();
         String nombre = nombre_txt.getText();
         String apellido = apellido_txt.getText();
@@ -295,7 +378,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
                 // JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE" + e);
                 System.out.println("error: " + e);
             }
-        } 
+        }*/ 
     }//GEN-LAST:event_agr_paciente_btnActionPerformed
 
     private void hombre_chkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hombre_chkActionPerformed
