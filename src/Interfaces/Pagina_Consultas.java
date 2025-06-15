@@ -4,11 +4,25 @@
  */
 package Interfaces;
 
+import java.awt.HeadlessException;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.Period;
+
+
 /**
  *
  * @author Usuario
  */
 public class Pagina_Consultas extends javax.swing.JFrame {
+
+  
+    private Connection cn;
 
     /**
      * Creates new form Pagina_Consultas
@@ -30,7 +44,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         nombre_txt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -38,12 +52,14 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         apellido_txt1 = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        btnLimpiar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -67,9 +83,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel12.setText("Cedula:");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
-        jTextField4.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 159, -1));
+        txtCedula.setForeground(new java.awt.Color(51, 51, 51));
+        txtCedula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 159, -1));
 
         jLabel2.setText("Nombre(s):");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, 20));
@@ -108,6 +124,14 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         });
         jPanel4.add(apellido_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 160, -1));
 
+        btnBuscar.setText("Bucar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, -1, 20));
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 0, 840, 180));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -127,13 +151,19 @@ public class Pagina_Consultas extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 710, 540));
 
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 760, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 585, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,6 +184,56 @@ public class Pagina_Consultas extends javax.swing.JFrame {
     private void apellido_txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellido_txt1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellido_txt1ActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       
+        String cedula = txtCedula.getText();
+        
+         try {
+             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicontrol", "medicontrol", "bata31@");
+             
+             String sql = "SELECT * FROM paciente WHERE cedula = ?";
+        PreparedStatement ps = (PreparedStatement) cn.prepareStatement(sql);
+        ps.setString(1, cedula);
+
+        ResultSet rs = ps.executeQuery();
+        
+         if (rs.next()) {
+            nombre_txt.setText(rs.getString("nombre"));
+            apellido_txt1.setText(rs.getString("apellido"));
+            java.sql.Date fechaNacimiento = rs.getDate("fecha de nacimiento");
+            // Convertir a LocalDate
+            LocalDate fechaNac = fechaNacimiento.toLocalDate();
+            LocalDate hoy = LocalDate.now();
+
+            // Calcular la edad
+            int edad = Period.between(fechaNac, hoy).getYears();
+
+            // Mostrar la edad en el campo
+            apellido_txt.setText(String.valueOf(edad));  // Cambia apellido_txt si tienes otro campo para edad
+
+            
+         } else {
+            JOptionPane.showMessageDialog(this, "No se encontró ningún paciente con esa cédula.");
+        }
+              rs.close();
+        ps.close();
+        cn.close();
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al consultar: " + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+      
+        txtCedula.setText("");
+        nombre_txt.setText("");
+        apellido_txt1.setText("");
+        apellido_txt.setText("");
+        
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,6 +273,8 @@ public class Pagina_Consultas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField apellido_txt;
     public javax.swing.JTextField apellido_txt1;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -207,7 +289,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField4;
     public javax.swing.JTextField nombre_txt;
+    private javax.swing.JTextField txtCedula;
     // End of variables declaration//GEN-END:variables
+
+
 }
