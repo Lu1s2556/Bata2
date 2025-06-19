@@ -13,6 +13,10 @@ public class Pacientes {
     private String direccion;
     private String email;
     private Date fecha;
+    
+    public Pacientes() {
+        
+    }
 
     public Pacientes(String cedula, String nombre, String apellido, String sexo, String grupoS, String telefono, String direccion, String email, Date fecha) {
         this.cedula = cedula;

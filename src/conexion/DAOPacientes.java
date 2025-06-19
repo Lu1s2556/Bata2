@@ -35,6 +35,10 @@ public class DAOPacientes {
     public boolean actualizarPaciente(Pacientes paciente) {
         String sql = "UPDATE paciente SET nombre=?, apellido=?, sexo=?, `grupo sanguineo`=?, telefono=?, direccion=?, email=?, `fecha de nacimiento`=? WHERE cedula=?";
 
+        if (cn == null) {
+            System.out.println("Error: La conexion con la base de datos no se establecio");
+            return false;
+        }
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());

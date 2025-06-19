@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import conexion.*;
 import java.sql.*;
+import javax.swing.JButton;
 
 public class Agregar_Paciente extends javax.swing.JFrame {
 
@@ -15,6 +16,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         initComponents();
     }
     
+    private JButton actualizar_btn;
+    
     // Ver informacion sin modificar
     public Agregar_Paciente (String cedula) {
         initComponents();
@@ -22,6 +25,29 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jLabel1.setText("Paciente");
         agr_paciente_btn.setVisible(false);
         soloLectura();
+        JButton modificar_btn = new JButton("Modificar");
+        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
+        jPanel1.revalidate(); // Actualiza la interfaz
+        jPanel1.repaint();    // Redibuja el panel
+        // Acción al presionar "Modificar"
+        modificar_btn.addActionListener(e -> {
+            activarEdicion();
+            modificar_btn.setVisible(false); // Ocultar el botón "Modificar"
+            agr_paciente_btn.setVisible(false);
+            // Crear botón "Actualizar" si aún no se ha creado
+            if (actualizar_btn == null) {
+                actualizar_btn = new JButton("Actualizar");
+                jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
+                jPanel1.revalidate();
+                jPanel1.repaint();
+
+                // Acción para guardar cambios
+                actualizar_btn.addActionListener(ev -> actualizarPaciente());
+            }
+
+            actualizar_btn.setVisible(true); // Mostrar el botón "Actualizar"
+        });
+
     }
     
     private void cargarDatos(String cedula){
@@ -67,6 +93,58 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         hombre_chk.setEnabled(false);
         mujer_chk.setEnabled(false);
 
+    }
+
+    private void activarEdicion() {
+        ci_txt.setEditable(true);
+        nombre_txt.setEditable(true);
+        apellido_txt.setEditable(true);
+        telefono_txt.setEditable(true);
+        direccion_txt.setEditable(true);
+        email_txt.setEditable(true);
+
+        gruposangre_box.setEnabled(true);
+        nacimiento_dte.setEnabled(true);
+
+        hombre_chk.setEnabled(true);
+        mujer_chk.setEnabled(true);
+
+        agr_paciente_btn.setVisible(true); // Opcional: mostrar botón de agregar paciente si es necesario
+    }
+
+    // Método para actualizar paciente en la base de datos
+    private void actualizarPaciente() {
+        // Crear objeto con datos modificados
+        Pacientes pacienteModificado = new Pacientes();
+        pacienteModificado.setCedula(ci_txt.getText());
+        pacienteModificado.setNombre(nombre_txt.getText());
+        pacienteModificado.setApellido(apellido_txt.getText());
+        pacienteModificado.setTelefono(telefono_txt.getText());
+        pacienteModificado.setDireccion(direccion_txt.getText());
+        pacienteModificado.setEmail(email_txt.getText());
+        pacienteModificado.setGrupoS(gruposangre_box.getSelectedItem().toString());
+        pacienteModificado.setSexo(hombre_chk.isSelected() ? "Hombre" : "Mujer");
+        
+        java.util.Date utilDate = nacimiento_dte.getDate();
+        if (utilDate != null) {
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        pacienteModificado.setFecha(sqlDate);
+        } else {
+            pacienteModificado.setFecha(null);
+        }
+        // Llamar al DAO para actualizar la información
+        DAOPacientes dao = new DAOPacientes(cn);
+        boolean exito = dao.actualizarPaciente(pacienteModificado);
+
+        // Mostrar mensaje según el resultado
+        if (exito) {
+            JOptionPane.showMessageDialog(null, "Paciente actualizado correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar paciente");
+        }
+
+        // Opcional: Ocultar el botón "Actualizar" después de actualizar
+        actualizar_btn.setVisible(false);
     }
 
 
