@@ -34,6 +34,10 @@ public class listaPacientes extends javax.swing.JFrame {
         tabla_tbl.setDefaultEditor(Object.class, null);
     }
     
+    public void recargarPacientes() {
+        cargarPacientesEnTabla();
+    }
+
 
     private String seleccionCedu(){
         int filaSelect = tabla_tbl.getSelectedRow();
@@ -63,7 +67,6 @@ public class listaPacientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_tbl = new javax.swing.JTable();
         jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,13 +141,7 @@ public class listaPacientes extends javax.swing.JFrame {
         jToggleButton3.setForeground(new java.awt.Color(0, 0, 0));
         jToggleButton3.setText("AGREGAR PACIENTES");
         jToggleButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 130, 30));
-
-        jToggleButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jToggleButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jToggleButton4.setText("MODIFICAR");
-        jToggleButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 130, 30));
+        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 150, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,7 +161,8 @@ public class listaPacientes extends javax.swing.JFrame {
         String selectedCedu = seleccionCedu();
         
         if (selectedCedu != null) {
-            new Agregar_Paciente(selectedCedu).setVisible(true);
+            Agregar_Paciente ventana = new Agregar_Paciente(selectedCedu, this);
+            ventana.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un paciente de la lista.");
         }
@@ -214,7 +212,6 @@ public class listaPacientes extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     public javax.swing.JTable tabla_tbl;
     // End of variables declaration//GEN-END:variables
 }

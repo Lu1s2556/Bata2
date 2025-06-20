@@ -32,8 +32,8 @@ public class DAOPacientes {
         }
     }
     
-    public boolean actualizarPaciente(Pacientes paciente) {
-        String sql = "UPDATE paciente SET nombre=?, apellido=?, sexo=?, `grupo sanguineo`=?, telefono=?, direccion=?, email=?, `fecha de nacimiento`=? WHERE cedula=?";
+    public boolean actualizarPaciente(Pacientes paciente, String cedulaAnterior) {
+        String sql = "UPDATE paciente SET nombre=?, apellido=?, sexo=?, `grupo sanguineo`=?, telefono=?, direccion=?, email=?, `fecha de nacimiento`=?, cedula=? WHERE cedula=?";
 
         if (cn == null) {
             System.out.println("Error: La conexion con la base de datos no se establecio");
@@ -49,6 +49,7 @@ public class DAOPacientes {
             ps.setString(7, paciente.getEmail());
             ps.setDate(8, paciente.getFecha());
             ps.setString(9, paciente.getCedula());
+            ps.setString(10, cedulaAnterior);
 
             int filasAfectadas = ps.executeUpdate();
             return filasAfectadas > 0; // Retorna true si al menos una fila fue modificada

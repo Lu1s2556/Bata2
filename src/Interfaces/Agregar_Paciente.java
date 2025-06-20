@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 import conexion.*;
 import java.sql.*;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Agregar_Paciente extends javax.swing.JFrame {
 
@@ -14,40 +15,23 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     
     public Agregar_Paciente() {        
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
+    private JButton modificar_btn;
     private JButton actualizar_btn;
+    private listaPacientes padre;
     
     // Ver informacion sin modificar
-    public Agregar_Paciente (String cedula) {
+    public Agregar_Paciente (String cedula, listaPacientes padre) {
         initComponents();
+        this.padre = padre;
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatos(cedula);
+        configurarBotones();
         jLabel1.setText("Paciente");
         agr_paciente_btn.setVisible(false);
         soloLectura();
-        JButton modificar_btn = new JButton("Modificar");
-        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
-        jPanel1.revalidate(); // Actualiza la interfaz
-        jPanel1.repaint();    // Redibuja el panel
-        // Acción al presionar "Modificar"
-        modificar_btn.addActionListener(e -> {
-            activarEdicion();
-            modificar_btn.setVisible(false); // Ocultar el botón "Modificar"
-            agr_paciente_btn.setVisible(false);
-            // Crear botón "Actualizar" si aún no se ha creado
-            if (actualizar_btn == null) {
-                actualizar_btn = new JButton("Actualizar");
-                jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
-                jPanel1.revalidate();
-                jPanel1.repaint();
-
-                // Acción para guardar cambios
-                actualizar_btn.addActionListener(ev -> actualizarPaciente());
-            }
-
-            actualizar_btn.setVisible(true); // Mostrar el botón "Actualizar"
-        });
-
     }
     
     private void cargarDatos(String cedula){
@@ -56,6 +40,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         
         if (paciente != null) {
             // Asignar datos a los campos de la interfaz
+            cedulaOriginal = paciente.getCedula();
             ci_txt.setText(paciente.getCedula());
             nombre_txt.setText(paciente.getNombre());
             apellido_txt.setText(paciente.getApellido());
@@ -111,6 +96,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
 
         agr_paciente_btn.setVisible(true); // Opcional: mostrar botón de agregar paciente si es necesario
     }
+    
+    private String cedulaOriginal;
 
     // Método para actualizar paciente en la base de datos
     private void actualizarPaciente() {
@@ -134,7 +121,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         }
         // Llamar al DAO para actualizar la información
         DAOPacientes dao = new DAOPacientes(cn);
-        boolean exito = dao.actualizarPaciente(pacienteModificado);
+        boolean exito = dao.actualizarPaciente(pacienteModificado, cedulaOriginal);
 
         // Mostrar mensaje según el resultado
         if (exito) {
@@ -145,6 +132,43 @@ public class Agregar_Paciente extends javax.swing.JFrame {
 
         // Opcional: Ocultar el botón "Actualizar" después de actualizar
         actualizar_btn.setVisible(false);
+    }
+    
+        private void configurarBotones() {
+        modificar_btn = new JButton("Modificar");
+        actualizar_btn = new JButton("Actualizar");
+
+        modificar_btn.addActionListener(e -> {
+            activarEdicion();
+            modificar_btn.setVisible(false);
+            actualizar_btn.setVisible(true);
+            agr_paciente_btn.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Puede actualizar los datos");
+        });
+
+        actualizar_btn.addActionListener(e -> {
+            actualizarPaciente(); // Tu método existente
+            soloLectura();
+            actualizar_btn.setVisible(false);
+            modificar_btn.setVisible(true);
+            agr_paciente_btn.setVisible(false);
+            if (padre != null) {
+                padre.recargarPacientes();
+            }
+        });
+
+        modificar_btn.setBounds(260, 350, 100, 30);
+        actualizar_btn.setBounds(260, 350, 100, 30);
+
+        // IMPORTANTE: Especificar la posición y tamaño usando AbsoluteConstraints
+        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
+        jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
+
+        modificar_btn.setVisible(true);
+        actualizar_btn.setVisible(false);
+
+        jPanel1.revalidate();
+        jPanel1.repaint();
     }
 
 
