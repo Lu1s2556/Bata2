@@ -56,7 +56,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnGuardarRecipe = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btnLimpiar = new javax.swing.JButton();
@@ -142,8 +142,13 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 10));
 
-        jButton1.setText("Imprimir ");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 760, -1, -1));
+        btnGuardarRecipe.setText("Guardar");
+        btnGuardarRecipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarRecipeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardarRecipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 760, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -231,9 +236,41 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         nombre_txt.setText("");
         apellido_txt1.setText("");
         apellido_txt.setText("");
+        jTextArea1.setText("");
         
         
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarRecipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarRecipeActionPerformed
+        
+     
+      String cedula = txtCedula.getText().trim();
+    String contenido = jTextArea1.getText().trim();
+
+    if (cedula.isEmpty() || contenido.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar una cédula y escribir el contenido del recipe.");
+        return;
+    }
+
+    try {
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicontrol", "medicontrol", "bata31@");
+
+        String sql = "INSERT INTO recipe (cedula, recipe) VALUES (?, ?)";
+        PreparedStatement ps = cn.prepareStatement(sql);
+        ps.setString(1, cedula);
+        ps.setString(2, contenido);
+
+        ps.executeUpdate();
+
+        JOptionPane.showMessageDialog(this, "Recipe guardado correctamente en la base de datos.");
+
+        ps.close();
+        cn.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Error al guardar el recipe: " + ex.getMessage());
+    }
+
+    }//GEN-LAST:event_btnGuardarRecipeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,8 +311,8 @@ public class Pagina_Consultas extends javax.swing.JFrame {
     public javax.swing.JTextField apellido_txt;
     public javax.swing.JTextField apellido_txt1;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnGuardarRecipe;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
