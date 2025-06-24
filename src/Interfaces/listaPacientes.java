@@ -66,7 +66,8 @@ public class listaPacientes extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_tbl = new javax.swing.JTable();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        Agregar_btn = new javax.swing.JToggleButton();
+        Volverbtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,7 +113,7 @@ public class listaPacientes extends javax.swing.JFrame {
                 informacion_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(informacion_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 130, 30));
+        jPanel1.add(informacion_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 130, 30));
 
         jToggleButton2.setBackground(new java.awt.Color(204, 204, 204));
         jToggleButton2.setForeground(new java.awt.Color(0, 0, 0));
@@ -137,11 +138,27 @@ public class listaPacientes extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 760, 370));
 
-        jToggleButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jToggleButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jToggleButton3.setText("AGREGAR PACIENTES");
-        jToggleButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 150, 30));
+        Agregar_btn.setBackground(new java.awt.Color(204, 204, 204));
+        Agregar_btn.setForeground(new java.awt.Color(0, 0, 0));
+        Agregar_btn.setText("AGREGAR PACIENTES");
+        Agregar_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Agregar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agregar_btnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Agregar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 150, 30));
+
+        Volverbtn.setBackground(new java.awt.Color(204, 204, 204));
+        Volverbtn.setForeground(new java.awt.Color(0, 0, 0));
+        Volverbtn.setText("VOLVER");
+        Volverbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Volverbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverbtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Volverbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 540, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,6 +184,19 @@ public class listaPacientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un paciente de la lista.");
         }
     }//GEN-LAST:event_informacion_btnActionPerformed
+
+    private void Agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregar_btnActionPerformed
+        Agregar_Paciente agregar = new Agregar_Paciente();
+        agregar.setVisible(true);
+    }//GEN-LAST:event_Agregar_btnActionPerformed
+
+    private void VolverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverbtnActionPerformed
+        Menu_Principal mp = new Menu_Principal();
+        this.dispose();
+        mp.setVisible(true);
+        mp.pack();
+        mp.setLocationRelativeTo(null);
+    }//GEN-LAST:event_VolverbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +234,8 @@ public class listaPacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JToggleButton Agregar_btn;
+    public javax.swing.JToggleButton Volverbtn;
     public javax.swing.JToggleButton informacion_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -211,7 +243,6 @@ public class listaPacientes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     public javax.swing.JTable tabla_tbl;
     // End of variables declaration//GEN-END:variables
 }
