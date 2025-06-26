@@ -208,68 +208,88 @@ public class Agregar_Paciente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(177, 234, 242));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel2.setBackground(new java.awt.Color(76, 207, 225));
+        jPanel2.setForeground(new java.awt.Color(76, 207, 225));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Agregar Paciente");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(157, 157, 157)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(125, 125, 125))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 70));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre(s):");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 20));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido(s):");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("C.I:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Sexo:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Dirección:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefono:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, -1));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Correo electronico:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Fecha de nacimiento:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, 30));
 
         apellido_txt.setBackground(new java.awt.Color(255, 255, 255));
+        apellido_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        apellido_txt.setForeground(new java.awt.Color(76, 207, 225));
         apellido_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         apellido_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,9 +305,11 @@ public class Agregar_Paciente extends javax.swing.JFrame {
                 email_txtActionPerformed(evt);
             }
         });
-        jPanel1.add(email_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 160, -1));
+        jPanel1.add(email_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
 
         telefono_txt.setBackground(new java.awt.Color(255, 255, 255));
+        telefono_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        telefono_txt.setForeground(new java.awt.Color(76, 207, 225));
         telefono_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         telefono_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,6 +319,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel1.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 160, -1));
 
         direccion_txt.setBackground(new java.awt.Color(255, 255, 255));
+        direccion_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        direccion_txt.setForeground(new java.awt.Color(76, 207, 225));
         direccion_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         direccion_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,6 +330,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel1.add(direccion_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 160, -1));
 
         nombre_txt.setBackground(new java.awt.Color(255, 255, 255));
+        nombre_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        nombre_txt.setForeground(new java.awt.Color(76, 207, 225));
         nombre_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nombre_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +341,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel1.add(nombre_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 160, -1));
 
         ci_txt.setBackground(new java.awt.Color(255, 255, 255));
+        ci_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        ci_txt.setForeground(new java.awt.Color(76, 207, 225));
         ci_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ci_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,7 +352,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel1.add(ci_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 160, -1));
 
         buttonGroup_SexCheck.add(mujer_chk);
-        mujer_chk.setForeground(new java.awt.Color(0, 0, 0));
+        mujer_chk.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        mujer_chk.setForeground(new java.awt.Color(255, 255, 255));
         mujer_chk.setText("Mujer");
         mujer_chk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,7 +363,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel1.add(mujer_chk, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 80, -1));
 
         buttonGroup_SexCheck.add(hombre_chk);
-        hombre_chk.setForeground(new java.awt.Color(0, 0, 0));
+        hombre_chk.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        hombre_chk.setForeground(new java.awt.Color(255, 255, 255));
         hombre_chk.setText("Hombre");
         hombre_chk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,8 +373,9 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         });
         jPanel1.add(hombre_chk, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 80, -1));
 
-        agr_paciente_btn.setBackground(new java.awt.Color(204, 204, 204));
-        agr_paciente_btn.setForeground(new java.awt.Color(0, 0, 0));
+        agr_paciente_btn.setBackground(new java.awt.Color(255, 255, 255));
+        agr_paciente_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        agr_paciente_btn.setForeground(new java.awt.Color(0, 207, 225));
         agr_paciente_btn.setText("Agregar paciente");
         agr_paciente_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         agr_paciente_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -352,21 +383,25 @@ public class Agregar_Paciente extends javax.swing.JFrame {
                 agr_paciente_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(agr_paciente_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
+        jPanel1.add(agr_paciente_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 130, 30));
 
         gruposangre_box.setBackground(new java.awt.Color(255, 255, 255));
-        gruposangre_box.setForeground(new java.awt.Color(0, 0, 0));
+        gruposangre_box.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        gruposangre_box.setForeground(new java.awt.Color(76, 207, 225));
         gruposangre_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+ ", "O-" }));
         gruposangre_box.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(gruposangre_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 160, 20));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Grupo sanguineo:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, 20));
 
-        nacimiento_dte.setBackground(new java.awt.Color(204, 255, 204));
+        nacimiento_dte.setBackground(new java.awt.Color(255, 255, 255));
+        nacimiento_dte.setForeground(new java.awt.Color(76, 207, 225));
         nacimiento_dte.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(nacimiento_dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 160, 30));
+        jPanel1.add(nacimiento_dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 140, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

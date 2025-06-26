@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
 
         PL_BASE = new javax.swing.JPanel();
         PL_izquierda = new javax.swing.JPanel();
-        Label_imagen = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         PL_derecha = new javax.swing.JPanel();
         TXT_usuario = new javax.swing.JTextField();
         TXT_clave = new javax.swing.JPasswordField();
@@ -49,34 +49,36 @@ public class Login extends javax.swing.JFrame {
         PL_BASE.setBackground(new java.awt.Color(0, 0, 0));
         PL_BASE.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PL_izquierda.setBackground(new java.awt.Color(255, 255, 255));
+        PL_izquierda.setBackground(new java.awt.Color(76, 207, 225));
+        PL_izquierda.setForeground(new java.awt.Color(76, 207, 225));
 
-        Label_imagen.setForeground(new java.awt.Color(0, 0, 0));
-        Label_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/images.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\jq523\\Downloads\\logo medicontrol pequeño color azul.png")); // NOI18N
 
         javax.swing.GroupLayout PL_izquierdaLayout = new javax.swing.GroupLayout(PL_izquierda);
         PL_izquierda.setLayout(PL_izquierdaLayout);
         PL_izquierdaLayout.setHorizontalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(Label_imagen)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel5)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         PL_izquierdaLayout.setVerticalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(Label_imagen)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(jLabel5)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         PL_BASE.add(PL_izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 360));
 
-        PL_derecha.setBackground(new java.awt.Color(55, 135, 25));
+        PL_derecha.setBackground(new java.awt.Color(177, 234, 242));
+        PL_derecha.setForeground(new java.awt.Color(177, 234, 242));
 
         TXT_usuario.setBackground(new java.awt.Color(255, 255, 255));
-        TXT_usuario.setForeground(new java.awt.Color(102, 102, 102));
+        TXT_usuario.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        TXT_usuario.setForeground(new java.awt.Color(76, 207, 225));
         TXT_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_usuarioActionPerformed(evt);
@@ -84,14 +86,17 @@ public class Login extends javax.swing.JFrame {
         });
 
         TXT_clave.setBackground(new java.awt.Color(255, 255, 255));
-        TXT_clave.setForeground(new java.awt.Color(102, 102, 102));
+        TXT_clave.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        TXT_clave.setForeground(new java.awt.Color(76, 207, 225));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("MediTrack v0.03");
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MediControl");
 
         BTN_entrar.setBackground(new java.awt.Color(255, 255, 255));
-        BTN_entrar.setForeground(new java.awt.Color(0, 0, 0));
+        BTN_entrar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        BTN_entrar.setForeground(new java.awt.Color(76, 207, 225));
         BTN_entrar.setText("Entrar");
         BTN_entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,12 +104,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario:");
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
 
         javax.swing.GroupLayout PL_derechaLayout = new javax.swing.GroupLayout(PL_derecha);
@@ -114,16 +121,17 @@ public class Login extends javax.swing.JFrame {
             .addGroup(PL_derechaLayout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
                 .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXT_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(145, 145, 145))
-            .addGroup(PL_derechaLayout.createSequentialGroup()
-                .addGap(191, 191, 191)
-                .addComponent(BTN_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
+                        .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(145, 145, 145))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
+                        .addComponent(BTN_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(198, 198, 198))))
         );
         PL_derechaLayout.setVerticalGroup(
             PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,13 +142,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TXT_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(51, 51, 51)
                 .addComponent(BTN_entrar)
-                .addGap(39, 39, 39))
+                .addGap(36, 36, 36))
         );
 
         PL_BASE.add(PL_derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 580, 360));
@@ -219,7 +227,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BTN_entrar;
-    private javax.swing.JLabel Label_imagen;
     private javax.swing.JPanel PL_BASE;
     private javax.swing.JPanel PL_derecha;
     private javax.swing.JPanel PL_izquierda;
@@ -228,5 +235,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
