@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 20:11:31
+-- Tiempo de generación: 26-06-2025 a las 20:51:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -27,21 +27,14 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `agenda`
 --
 
+DROP TABLE IF EXISTS `agenda`;
 CREATE TABLE `agenda` (
   `id_agenda` int(11) NOT NULL,
   `cedula` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `hora` int(11) NOT NULL,
-  `dia` varchar(10) NOT NULL,
-  `mes` varchar(15) NOT NULL
+  `hora` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `dia` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `mes` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `agenda`
---
-
-INSERT INTO `agenda` (`id_agenda`, `cedula`, `hora`, `dia`, `mes`) VALUES
-(1, '34', 10, '', ''),
-(2, '34', 4, 'lunes', 'junio');
 
 -- --------------------------------------------------------
 
@@ -49,6 +42,7 @@ INSERT INTO `agenda` (`id_agenda`, `cedula`, `hora`, `dia`, `mes`) VALUES
 -- Estructura de tabla para la tabla `antecedentes`
 --
 
+DROP TABLE IF EXISTS `antecedentes`;
 CREATE TABLE `antecedentes` (
   `Id_antecedentes` int(11) NOT NULL,
   `cedula` varchar(15) NOT NULL,
@@ -57,31 +51,17 @@ CREATE TABLE `antecedentes` (
   `Observaciones` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
---
--- Volcado de datos para la tabla `antecedentes`
---
-
-INSERT INTO `antecedentes` (`Id_antecedentes`, `cedula`, `historial`, `enfermedades`, `Observaciones`) VALUES
-(1, '34', 'dsfvgasedga', 'adfgagadfg', '');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `login`
 --
 
+DROP TABLE IF EXISTS `login`;
 CREATE TABLE `login` (
   `usuario` varchar(20) NOT NULL,
   `contraseña` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
---
--- Volcado de datos para la tabla `login`
---
-
-INSERT INTO `login` (`usuario`, `contraseña`) VALUES
-('admin', '1234'),
-('burrx23', '5090');
 
 -- --------------------------------------------------------
 
@@ -89,6 +69,7 @@ INSERT INTO `login` (`usuario`, `contraseña`) VALUES
 -- Estructura de tabla para la tabla `paciente`
 --
 
+DROP TABLE IF EXISTS `paciente`;
 CREATE TABLE `paciente` (
   `cedula` varchar(15) NOT NULL,
   `nombre` varchar(100) NOT NULL,
@@ -101,20 +82,13 @@ CREATE TABLE `paciente` (
   `fecha de nacimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
---
--- Volcado de datos para la tabla `paciente`
---
-
-INSERT INTO `paciente` (`cedula`, `nombre`, `apellido`, `sexo`, `grupo sanguineo`, `telefono`, `direccion`, `email`, `fecha de nacimiento`) VALUES
-('34', 'fasedg', 'adfgaeg', 'adfg', 'aerga', '34563456', 'fgbsdfbhshh', 'edrgeargaegr', '2025-06-17'),
-('V267673', 'eriberto', 'rojas', 'Mujer', 'B+', '04145670897', 'palacio', 'yuscuayu@gmail.com', '2025-06-10');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `recipe`
 --
 
+DROP TABLE IF EXISTS `recipe`;
 CREATE TABLE `recipe` (
   `id_recipe` bigint(20) NOT NULL,
   `cedula` varchar(15) NOT NULL,
@@ -160,13 +134,13 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT de la tabla `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `antecedentes`
 --
 ALTER TABLE `antecedentes`
-  MODIFY `Id_antecedentes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_antecedentes` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `recipe`
