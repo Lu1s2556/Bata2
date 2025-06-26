@@ -154,7 +154,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Agenda ag = new Agenda();
+        agenda ag = new agenda();
         this.dispose();
         ag.setVisible(true);
         ag.pack();

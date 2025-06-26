@@ -255,11 +255,11 @@ public class Antecedentes2 extends javax.swing.JFrame {
             pst.setString(1, cedula);
             ResultSet rs= pst.executeQuery();
              if(rs.next()) {
-                txt_nombre.setText(rs.getString("nombre"));
+                txt_nombre.setText(rs.getString("nombre")+rs.getString("apellido"));
                 txt_sexo.setText(rs.getString("sexo"));
                 txt_gruposanguineo.setText(rs.getString("grupo sanguineo"));
                 txt_edad.setText(rs.getString("fecha de nacimiento"));
-                txt_antecedentesmedicos.setText(rs.getString("antecedentes"));
+                txt_antecedentesmedicos.setText(rs.getString("historial"));
                 txt_enfermedades.setText(rs.getString("enfermedades"));
             } else {
                 JOptionPane.showMessageDialog(null,"Paciente no encontrado");
@@ -282,18 +282,18 @@ public class Antecedentes2 extends javax.swing.JFrame {
             String usuario =  "medicontrol";
             String pass = "bata31@";
             Connection cn = DriverManager.getConnection(url,usuario,pass);
-            PreparedStatement pst = cn.prepareStatement("Select * from antecedentes where cedula =?");
+            PreparedStatement pst = cn.prepareStatement("Select * from antecedentes where cedula = ?");
             pst.setString(1,cedula);
             ResultSet rs= pst.executeQuery();
             if (rs.next()) {
-                PreparedStatement psupdate = cn.prepareStatement("update antecedentes set antecedentes = ?, enfermedades = ?, where cedula = ?");
+                PreparedStatement psupdate = cn.prepareStatement("update antecedentes set historial = ?, enfermedades = ?, where cedula = ?");
                 psupdate.setString(1, ant_med);
                 psupdate.setString(2, enfermedades);
                 psupdate.setString(3, cedula);
                 psupdate.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Informacion actualizada correctamente");
             }else {
-                PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (cedula, antecedentes, enfermedades) values (?, ?, ?");
+                PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (cedula, historial, enfermedades) values (?, ?, ?)");
                 psInsert.setString(1,cedula);
                 psInsert.setString(2,ant_med);
                 psInsert.setString(3,enfermedades);
