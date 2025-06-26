@@ -4,12 +4,17 @@
  */
 package Interfaces;
 
+import Imagenes.PDF;
+import conexion.conexionSQL;
+import java.sql.Connection;
+
 /**
  *
  * @author Burrx
  */
 public class Menu_Principal extends javax.swing.JFrame {
-
+    conexionSQL con = new conexionSQL();
+    Connection cn = con.conectar();
     /**
      * Creates new form Menu_Principal
      */
@@ -33,6 +38,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         BTN_RECIPES = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        BT_PRUEBA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,6 +89,13 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
+        BT_PRUEBA.setText("jButton1");
+        BT_PRUEBA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_PRUEBAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -106,13 +119,19 @@ public class Menu_Principal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(474, 474, 474))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(239, 239, 239)
+                .addComponent(BT_PRUEBA)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(72, 72, 72)
+                .addGap(20, 20, 20)
+                .addComponent(BT_PRUEBA)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -161,6 +180,14 @@ public class Menu_Principal extends javax.swing.JFrame {
         ag.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void BT_PRUEBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PRUEBAActionPerformed
+        PDF pd = new PDF(cn);
+        
+        pd.generarPDF();
+        
+        
+    }//GEN-LAST:event_BT_PRUEBAActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +225,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_RECIPES;
+    private javax.swing.JButton BT_PRUEBA;
     public javax.swing.JButton Paciente_btn;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

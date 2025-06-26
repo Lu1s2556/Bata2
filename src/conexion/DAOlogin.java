@@ -4,9 +4,7 @@
  */
 package conexion;
 
-import com.mysql.cj.jdbc.ServerPreparedStatement;
 import java.sql.*;
-import javax.swing.JOptionPane;
 
 /**
  *
