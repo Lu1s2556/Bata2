@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import java.time.LocalDate;
+import java.time.Period;
+import java.sql.Date;
 import java.sql.*;
 import conexion.conexionSQL;
 import java.sql.Connection;
@@ -251,7 +254,7 @@ public class Antecedentes2 extends javax.swing.JFrame {
             Connection cn = DriverManager.getConnection(url,usuario,pass);
                     
             
-            PreparedStatement pst = cn.prepareStatement("select * from paciente where cedula =?");
+            PreparedStatement pst = cn.prepareStatement("SELECT * FROM paciente WHERE cedula = ?");
             pst.setString(1, cedula);
             ResultSet rs= pst.executeQuery();
              if(rs.next()) {
@@ -259,11 +262,24 @@ public class Antecedentes2 extends javax.swing.JFrame {
                 txt_sexo.setText(rs.getString("sexo"));
                 txt_gruposanguineo.setText(rs.getString("grupo sanguineo"));
                 txt_edad.setText(rs.getString("fecha de nacimiento"));
-                txt_antecedentesmedicos.setText(rs.getString("historial"));
-                txt_enfermedades.setText(rs.getString("enfermedades"));
+                
             } else {
                 JOptionPane.showMessageDialog(null,"Paciente no encontrado");
             }
+            PreparedStatement ps2 = cn.prepareStatement("SELECT cedula, historial, enfermedades, observaciones FROM antecedentes WHERE cedula = ?");
+            ps2.setString(1, cedula);
+            ResultSet rs2 = ps2.executeQuery();
+
+             if (rs2.next()) {
+                txt_antecedentesmedicos.setText(rs2.getString("historial"));
+                txt_enfermedades.setText(rs2.getString("enfermedades"));
+                txt_observaciones.setText(rs2.getString("observaciones"));
+             } else {
+                txt_antecedentesmedicos.setText("");
+                txt_enfermedades.setText("");
+                txt_observaciones.setText("");
+}
+
             
             
                     
@@ -277,6 +293,7 @@ public class Antecedentes2 extends javax.swing.JFrame {
     String cedula = txt_cedula.getText().trim();
     String ant_med = txt_antecedentesmedicos.getText().trim();
     String enfermedades = txt_enfermedades.getText().trim();
+    String observaciones = txt_observaciones.getText().trim();
         try {
             String url= "jdbc:mysql://localhost:3306/medicontrol";
             String usuario =  "medicontrol";
@@ -286,17 +303,21 @@ public class Antecedentes2 extends javax.swing.JFrame {
             pst.setString(1,cedula);
             ResultSet rs= pst.executeQuery();
             if (rs.next()) {
-                PreparedStatement psupdate = cn.prepareStatement("update antecedentes set historial = ?, enfermedades = ?, where cedula = ?");
+                PreparedStatement psupdate = cn.prepareStatement("update antecedentes set historial = ?, enfermedades = ?, observaciones = ? WHERE cedula = ?");
                 psupdate.setString(1, ant_med);
                 psupdate.setString(2, enfermedades);
-                psupdate.setString(3, cedula);
+                psupdate.setString(3, observaciones);
+                psupdate.setString(4, cedula);
+
                 psupdate.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Informacion actualizada correctamente");
             }else {
-                PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (cedula, historial, enfermedades) values (?, ?, ?)");
-                psInsert.setString(1,cedula);
-                psInsert.setString(2,ant_med);
-                psInsert.setString(3,enfermedades);
+                PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (id_antecedentes, cedula, historial, enfermedades, observaciones) values (?, ?, ?, ?, ?)");
+                psInsert.setInt(1,0);
+                psInsert.setString(2,cedula);
+                psInsert.setString(3,ant_med);
+                psInsert.setString(4,enfermedades);
+                psInsert.setString(5,observaciones);
                 psInsert.executeUpdate();
                 JOptionPane.showMessageDialog(this, "antecedentes guardados correctamente");
             }
