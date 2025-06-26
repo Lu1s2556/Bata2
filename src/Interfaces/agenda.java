@@ -5,10 +5,21 @@
 package Interfaces;
 
 import javax.swing.table.DefaultTableModel;
-
+import conexion.conexionSQL;
+import java.sql.Connection;
+import java.sql.*;
+import conexion.*;
+import java.awt.HeadlessException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class agenda extends javax.swing.JFrame {
 
+     conexionSQL con = new conexionSQL();
+    Connection cn = con.conectar();    
     private DefaultTableModel tb;
     private Object[] g = new Object [5];
     
@@ -37,7 +48,7 @@ public class agenda extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buscar_btn = new javax.swing.JButton();
         agregar_btn = new javax.swing.JButton();
         dia = new javax.swing.JComboBox<>();
         mes = new javax.swing.JComboBox<>();
@@ -96,10 +107,15 @@ public class agenda extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Mes");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(76, 207, 225));
-        jButton1.setText("Buscar");
+        buscar_btn.setBackground(new java.awt.Color(255, 255, 255));
+        buscar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        buscar_btn.setForeground(new java.awt.Color(76, 207, 225));
+        buscar_btn.setText("Buscar");
+        buscar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscar_btnActionPerformed(evt);
+            }
+        });
 
         agregar_btn.setBackground(new java.awt.Color(255, 255, 255));
         agregar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -152,7 +168,7 @@ public class agenda extends javax.swing.JFrame {
                             .addComponent(hora))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(buscar_btn)
                             .addComponent(agregar_btn))))
                 .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -168,7 +184,7 @@ public class agenda extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(buscar_btn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,17 +246,17 @@ public class agenda extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 600, 350));
@@ -261,6 +277,25 @@ public class agenda extends javax.swing.JFrame {
         
         tb.addRow(g);
     }//GEN-LAST:event_agregar_btnActionPerformed
+
+    private void buscar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_btnActionPerformed
+        
+        String cedula = cedula_txt.getText();
+        
+      String SQL = "SELECT * FROM paciente WHERE cedula = ?";
+        try (PreparedStatement PS = cn.prepareStatement(SQL)) {
+            PS.setString(1, cedula);
+            ResultSet rs = PS.executeQuery();
+        if (rs.next()) {
+        nombre_txt.setText(rs.getString("nombre") + " " + rs.getString("apellido"));
+    } else {
+        JOptionPane.showMessageDialog(null, "Paciente no encontrado.");
+    }
+} catch (HeadlessException | SQLException e) {
+    System.out.println("Error: " + e);
+}
+            
+    }//GEN-LAST:event_buscar_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,10 +335,10 @@ public class agenda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;
     private javax.swing.JButton agregar_btn;
+    private javax.swing.JButton buscar_btn;
     private javax.swing.JTextField cedula_txt;
     private javax.swing.JComboBox<String> dia;
     private javax.swing.JTextField hora;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
