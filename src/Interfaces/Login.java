@@ -36,6 +36,8 @@ public class Login extends javax.swing.JFrame {
         PL_BASE = new javax.swing.JPanel();
         PL_izquierda = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         PL_derecha = new javax.swing.JPanel();
         TXT_usuario = new javax.swing.JTextField();
         TXT_clave = new javax.swing.JPasswordField();
@@ -52,21 +54,37 @@ public class Login extends javax.swing.JFrame {
         PL_izquierda.setBackground(new java.awt.Color(76, 207, 225));
         PL_izquierda.setForeground(new java.awt.Color(76, 207, 225));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo medicontrol pequeño color azul.png"))); // NOI18N
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo azul.png"))); // NOI18N
+
         javax.swing.GroupLayout PL_izquierdaLayout = new javax.swing.GroupLayout(PL_izquierda);
         PL_izquierda.setLayout(PL_izquierdaLayout);
         PL_izquierdaLayout.setHorizontalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PL_izquierdaLayout.setVerticalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel5)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGroup(PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PL_izquierdaLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel5))
+                    .addGroup(PL_izquierdaLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel4))
+                    .addGroup(PL_izquierdaLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel6)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         PL_BASE.add(PL_izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 360));
@@ -233,6 +251,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

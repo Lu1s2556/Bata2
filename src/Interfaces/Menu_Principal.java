@@ -43,18 +43,21 @@ public class Menu_Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(177, 234, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Meditrack V0.01");
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Medicontrol");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Dr: XXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-        Paciente_btn.setBackground(new java.awt.Color(141, 175, 45));
-        Paciente_btn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Paciente_btn.setBackground(new java.awt.Color(76, 207, 225));
+        Paciente_btn.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        Paciente_btn.setForeground(new java.awt.Color(255, 255, 255));
         Paciente_btn.setText("Nuevo Paciente");
         Paciente_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,8 +65,9 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
-        BTN_RECIPES.setBackground(new java.awt.Color(141, 175, 45));
-        BTN_RECIPES.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        BTN_RECIPES.setBackground(new java.awt.Color(76, 207, 225));
+        BTN_RECIPES.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        BTN_RECIPES.setForeground(new java.awt.Color(255, 255, 255));
         BTN_RECIPES.setText("Lista De Recipes");
         BTN_RECIPES.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.green, java.awt.Color.green));
         BTN_RECIPES.setBorderPainted(false);
@@ -74,8 +78,9 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(141, 175, 45));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(76, 207, 225));
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Consulta");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +88,9 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(141, 175, 45));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton4.setBackground(new java.awt.Color(76, 207, 225));
+        jButton4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Programar Citas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +98,9 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
+        BT_PRUEBA.setBackground(new java.awt.Color(255, 255, 255));
+        BT_PRUEBA.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        BT_PRUEBA.setForeground(new java.awt.Color(76, 207, 225));
         BT_PRUEBA.setText("jButton1");
         BT_PRUEBA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +145,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addComponent(BT_PRUEBA)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_RECIPES, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -71,24 +71,26 @@ public class listaPacientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(177, 234, 242));
+        jPanel1.setForeground(new java.awt.Color(177, 234, 242));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel2.setBackground(new java.awt.Color(76, 207, 225));
+        jPanel2.setForeground(new java.awt.Color(76, 207, 225));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pacientes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(321, 321, 321)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(304, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addGap(302, 302, 302))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,11 +103,14 @@ public class listaPacientes extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(76, 207, 225));
         jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 160, 30));
 
-        informacion_btn.setBackground(new java.awt.Color(204, 204, 204));
-        informacion_btn.setForeground(new java.awt.Color(0, 0, 0));
+        informacion_btn.setBackground(new java.awt.Color(255, 255, 255));
+        informacion_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        informacion_btn.setForeground(new java.awt.Color(76, 207, 225));
         informacion_btn.setText("INFORMACIÓN");
         informacion_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,14 +120,16 @@ public class listaPacientes extends javax.swing.JFrame {
         });
         jPanel1.add(informacion_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 130, 30));
 
-        jToggleButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jToggleButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jToggleButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jToggleButton2.setForeground(new java.awt.Color(76, 207, 225));
         jToggleButton2.setText("BUSCAR");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 60, 30));
 
         tabla_tbl.setBackground(new java.awt.Color(255, 255, 255));
-        tabla_tbl.setForeground(new java.awt.Color(0, 0, 0));
+        tabla_tbl.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        tabla_tbl.setForeground(new java.awt.Color(76, 207, 225));
         tabla_tbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -138,8 +145,9 @@ public class listaPacientes extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 760, 370));
 
-        Agregar_btn.setBackground(new java.awt.Color(204, 204, 204));
-        Agregar_btn.setForeground(new java.awt.Color(0, 0, 0));
+        Agregar_btn.setBackground(new java.awt.Color(255, 255, 255));
+        Agregar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Agregar_btn.setForeground(new java.awt.Color(76, 207, 225));
         Agregar_btn.setText("AGREGAR PACIENTES");
         Agregar_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Agregar_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -149,8 +157,9 @@ public class listaPacientes extends javax.swing.JFrame {
         });
         jPanel1.add(Agregar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 150, 30));
 
-        Volverbtn.setBackground(new java.awt.Color(204, 204, 204));
-        Volverbtn.setForeground(new java.awt.Color(0, 0, 0));
+        Volverbtn.setBackground(new java.awt.Color(255, 255, 255));
+        Volverbtn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Volverbtn.setForeground(new java.awt.Color(76, 207, 225));
         Volverbtn.setText("VOLVER");
         Volverbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Volverbtn.addActionListener(new java.awt.event.ActionListener() {
