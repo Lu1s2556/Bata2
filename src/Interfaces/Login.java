@@ -52,8 +52,6 @@ public class Login extends javax.swing.JFrame {
         PL_izquierda.setBackground(new java.awt.Color(76, 207, 225));
         PL_izquierda.setForeground(new java.awt.Color(76, 207, 225));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\jq523\\Downloads\\logo medicontrol pequeño color azul.png")); // NOI18N
-
         javax.swing.GroupLayout PL_izquierdaLayout = new javax.swing.GroupLayout(PL_izquierda);
         PL_izquierda.setLayout(PL_izquierdaLayout);
         PL_izquierdaLayout.setHorizontalGroup(
