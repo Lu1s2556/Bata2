@@ -14,10 +14,6 @@ import java.sql.ResultSet;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class PDF {
-
-    public static void generarPDF(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     private Connection cn;
     public String recipe;
@@ -26,9 +22,8 @@ public class PDF {
         this.cn = cn;
     }
 
-    public void generarPDF() {
+    public void generarPDF(String cedula) {
         try {
-            String cedula = "34";
             String nombreDoctor = "Dr. Juan Pérez";
             String nombrePaciente = "";
             String recipe = "";
@@ -133,7 +128,7 @@ public class PDF {
 
             // === Guardar con nombre dinámico ===
             String nombreLimpio = nombrePaciente.replaceAll("[^a-zA-Z0-9]", "");
-            String nombreArchivo = "D:\\Receta_" + nombreLimpio + "_" + idRecipe + ".pdf";
+            String nombreArchivo = "C:\\Users\\Public\\Receta_" + nombreLimpio + "_" + idRecipe + ".pdf";
             docu.save(nombreArchivo);
             docu.close();
 

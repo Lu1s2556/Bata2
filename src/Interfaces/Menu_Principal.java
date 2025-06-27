@@ -180,9 +180,6 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void BT_PRUEBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PRUEBAActionPerformed
-        PDF pd = new PDF(cn);
-        
-        pd.generarPDF();
         
         
     }//GEN-LAST:event_BT_PRUEBAActionPerformed

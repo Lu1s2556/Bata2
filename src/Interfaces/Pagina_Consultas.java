@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.time.LocalDate;
 import java.time.Period;
 import Imagenes.PDF;
+import conexion.conexionSQL;
 
 
 
@@ -22,9 +23,9 @@ import Imagenes.PDF;
  * @author Usuario
  */
 public class Pagina_Consultas extends javax.swing.JFrame {
-
+    conexionSQL con = new conexionSQL();
+    Connection cn = con.conectar();
   
-    private Connection cn;
 
     /**
      * Creates new form Pagina_Consultas
@@ -253,36 +254,36 @@ public class Pagina_Consultas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        
+        PDF pd = new PDF(cn);
      
-       String cedula = txtCedula.getText().trim();
-    String contenido = jTextArea1.getText().trim();
+        String cedula = txtCedula.getText().trim();
+        String contenido = jTextArea1.getText().trim();
 
-    if (cedula.isEmpty() || contenido.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe ingresar una cédula y escribir el contenido del recipe.");
-        return;
-    }
+        if (cedula.isEmpty() || contenido.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una cédula y escribir el contenido del recipe.");
+            return;
+        }
 
-    try {
-        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicontrol", "medicontrol", "bata31@");
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicontrol", "medicontrol", "bata31@");
 
-        String sql = "INSERT INTO recipe (cedula, recipe) VALUES (?, ?)";
-        PreparedStatement ps = cn.prepareStatement(sql);
-        ps.setString(1, cedula);
-        ps.setString(2, contenido);
-        ps.executeUpdate();
+            String sql = "INSERT INTO recipe (cedula, recipe) VALUES (?, ?)";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, cedula);
+            ps.setString(2, contenido);
+            ps.executeUpdate();
 
-        ps.close();
-        cn.close();
+            ps.close();
+            cn.close();
 
-        JOptionPane.showMessageDialog(this, "Recipe guardado correctamente para la cédula: " + cedula);
+            JOptionPane.showMessageDialog(this, "Recipe guardado correctamente para la cédula: " + cedula);
 
-        // ✅ Llamar a PDF después de guardar
-        PDF.generarPDF(cedula);
+            // ✅ Llamar a PDF después de guardar
+            pd.generarPDF(cedula);
 
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Error al guardar el recipe: " + ex.getMessage());
-    }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar el recipe: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuActionPerformed
