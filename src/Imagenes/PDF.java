@@ -42,7 +42,8 @@ public class PDF {
             }
 
             // === Obtener receta e ID ===
-            String SQLrecipe = "SELECT id_recipe, recipe FROM recipe WHERE cedula = ?";
+            String SQLrecipe = "SELECT id_recipe, recipe FROM recipe WHERE cedula = ? ORDER BY id_recipe DESC LIMIT 1";
+
             try (PreparedStatement psRecipe = cn.prepareStatement(SQLrecipe)) {
                 psRecipe.setString(1, cedula);
                 ResultSet rsRecipe = psRecipe.executeQuery();
@@ -51,6 +52,7 @@ public class PDF {
                     recipe = rsRecipe.getString("recipe");
                 }
             }
+
 
             PDDocument docu = new PDDocument();
             PDPage page = new PDPage(PDRectangle.A5);

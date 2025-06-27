@@ -35,10 +35,9 @@ public class Menu_Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Paciente_btn = new javax.swing.JButton();
-        BTN_RECIPES = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        BT_PRUEBA = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,30 +57,21 @@ public class Menu_Principal extends javax.swing.JFrame {
         Paciente_btn.setBackground(new java.awt.Color(76, 207, 225));
         Paciente_btn.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         Paciente_btn.setForeground(new java.awt.Color(255, 255, 255));
+        Paciente_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_193612.png"))); // NOI18N
         Paciente_btn.setText("Nuevo Paciente");
+        Paciente_btn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         Paciente_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Paciente_btnActionPerformed(evt);
             }
         });
 
-        BTN_RECIPES.setBackground(new java.awt.Color(76, 207, 225));
-        BTN_RECIPES.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        BTN_RECIPES.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_RECIPES.setText("Lista De Recipes");
-        BTN_RECIPES.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.green, java.awt.Color.green));
-        BTN_RECIPES.setBorderPainted(false);
-        BTN_RECIPES.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BTN_RECIPES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_RECIPESActionPerformed(evt);
-            }
-        });
-
         jButton3.setBackground(new java.awt.Color(76, 207, 225));
         jButton3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_192525.png"))); // NOI18N
         jButton3.setText("Consulta");
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -91,20 +81,25 @@ public class Menu_Principal extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(76, 207, 225));
         jButton4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Programar Citas");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_190123.png"))); // NOI18N
+        jButton4.setText("Agenda");
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        BT_PRUEBA.setBackground(new java.awt.Color(255, 255, 255));
-        BT_PRUEBA.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        BT_PRUEBA.setForeground(new java.awt.Color(76, 207, 225));
-        BT_PRUEBA.setText("jButton1");
-        BT_PRUEBA.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setBackground(new java.awt.Color(76, 207, 225));
+        jButton5.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_194527.png"))); // NOI18N
+        jButton5.setText("Lista recipes");
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jButton5.setIconTextGap(0);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_PRUEBAActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -115,40 +110,36 @@ public class Menu_Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(147, 147, 147)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BTN_RECIPES, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))
-                .addGap(120, 120, 120))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(105, 105, 105))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(428, 428, 428))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(474, 474, 474))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(BT_PRUEBA)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(515, 515, 515))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(470, 470, 470))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel1)
-                .addGap(20, 20, 20)
-                .addComponent(BT_PRUEBA)
-                .addGap(25, 25, 25)
+                .addGap(65, 65, 65)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTN_RECIPES, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Paciente_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,14 +159,6 @@ public class Menu_Principal extends javax.swing.JFrame {
         lp.setLocationRelativeTo(null);
     }//GEN-LAST:event_Paciente_btnActionPerformed
 
-    private void BTN_RECIPESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RECIPESActionPerformed
-        Lista_Recipes lr = new Lista_Recipes();
-        this.dispose();
-        lr.setVisible(true);
-        lr.pack();
-        lr.setLocationRelativeTo(null);
-    }//GEN-LAST:event_BTN_RECIPESActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Pagina_Consultas pc = new Pagina_Consultas();
         this.dispose();
@@ -188,10 +171,9 @@ public class Menu_Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void BT_PRUEBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PRUEBAActionPerformed
-        
-        
-    }//GEN-LAST:event_BT_PRUEBAActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,11 +211,10 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTN_RECIPES;
-    private javax.swing.JButton BT_PRUEBA;
     public javax.swing.JButton Paciente_btn;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
