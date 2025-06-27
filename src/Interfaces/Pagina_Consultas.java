@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
 import java.time.Period;
+import Imagenes.PDF;
+
 
 
 /**
@@ -56,10 +58,11 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        btnGuardarRecipe = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btnLimpiar = new javax.swing.JButton();
+        btnVolverMenu = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,13 +145,13 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 10));
 
-        btnGuardarRecipe.setText("Guardar");
-        btnGuardarRecipe.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarRecipeActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardarRecipe, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 760, -1, -1));
+        jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 760, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -162,7 +165,15 @@ public class Pagina_Consultas extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 760, -1, -1));
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 760, -1, -1));
+
+        btnVolverMenu.setText("Menu Principal");
+        btnVolverMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 760, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,10 +206,10 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         String cedula = txtCedula.getText();
         
          try {
-             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicontrol", "medicontrol", "bata31@");
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicontrol", "medicontrol", "bata31@");
              
              String sql = "SELECT * FROM paciente WHERE cedula = ?";
-        PreparedStatement ps = (PreparedStatement) cn.prepareStatement(sql);
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
         ps.setString(1, cedula);
 
         ResultSet rs = ps.executeQuery();
@@ -223,7 +234,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         }
               rs.close();
         ps.close();
-        cn.close();
+        con.close();
         } catch (HeadlessException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error al consultar: " + ex.getMessage());
         }
@@ -241,10 +252,10 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void btnGuardarRecipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarRecipeActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         
      
-      String cedula = txtCedula.getText().trim();
+       String cedula = txtCedula.getText().trim();
     String contenido = jTextArea1.getText().trim();
 
     if (cedula.isEmpty() || contenido.isEmpty()) {
@@ -259,18 +270,29 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         PreparedStatement ps = cn.prepareStatement(sql);
         ps.setString(1, cedula);
         ps.setString(2, contenido);
-
         ps.executeUpdate();
-
-        JOptionPane.showMessageDialog(this, "Recipe guardado correctamente en la base de datos.");
 
         ps.close();
         cn.close();
+
+        JOptionPane.showMessageDialog(this, "Recipe guardado correctamente para la cédula: " + cedula);
+
+        // ✅ Llamar a PDF después de guardar
+        PDF.generarPDF(cedula);
+
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(this, "Error al guardar el recipe: " + ex.getMessage());
     }
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
-    }//GEN-LAST:event_btnGuardarRecipeActionPerformed
+    private void btnVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuActionPerformed
+       
+        
+        this.dispose(); // Cierra la ventana actual
+    new Menu_Principal().setVisible(true);
+    
+    
+    }//GEN-LAST:event_btnVolverMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,8 +333,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
     public javax.swing.JTextField apellido_txt;
     public javax.swing.JTextField apellido_txt1;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnGuardarRecipe;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnVolverMenu;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

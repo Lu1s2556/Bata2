@@ -14,6 +14,10 @@ import java.sql.ResultSet;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class PDF {
+
+    public static void generarPDF(String cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     private Connection cn;
     public String recipe;
