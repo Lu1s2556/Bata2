@@ -76,7 +76,7 @@ public class PDF {
             contenido.stroke();
 
             // === Logo ===
-            InputStream logoInput = getClass().getResourceAsStream("src/Imagenes/Logo_Medicontrol.png");
+            InputStream logoInput = getClass().getResourceAsStream("/Imagenes/Logo_medicontrol.png");
             PDImageXObject logo = PDImageXObject.createFromByteArray(docu, logoInput.readAllBytes(), "Logo");
             contenido.drawImage(logo, (w - 60) / 2, h - 85, 60, 60);
 

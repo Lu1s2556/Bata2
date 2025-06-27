@@ -13,9 +13,16 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     conexionSQL con = new conexionSQL();
     Connection cn = con.conectar();
     
+    private listaPacientes ventana;
+    
     public Agregar_Paciente() {        
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+    
+    public Agregar_Paciente(listaPacientes ventana) {
+        initComponents();
+        this.ventana = ventana;
     }
     
     private JButton modificar_btn;
@@ -470,10 +477,13 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         DAOPacientes dao = new DAOPacientes(cn);
         if (dao.agregarPaciente(p)) {
             JOptionPane.showMessageDialog(null, "SE PUDO AGREGAR EL PACIENTE EXITOSAMENTE!");
+            if (ventana != null) {
+                ventana.recargarPacientes(); // ¡Actualiza la tabla!
+            }
         } else {
             JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE");
         }
-
+        this.dispose();
         
         /*
         String cedula = ci_txt.getText();

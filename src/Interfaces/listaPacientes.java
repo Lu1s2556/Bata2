@@ -4,7 +4,9 @@ import conexion.*;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class listaPacientes extends javax.swing.JFrame {
     
@@ -61,7 +63,7 @@ public class listaPacientes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Filtrotxt = new javax.swing.JTextField();
         informacion_btn = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -102,11 +104,16 @@ public class listaPacientes extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(76, 207, 225));
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 160, 30));
+        Filtrotxt.setBackground(new java.awt.Color(255, 255, 255));
+        Filtrotxt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Filtrotxt.setForeground(new java.awt.Color(76, 207, 225));
+        Filtrotxt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Filtrotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                FiltrotxtKeyReleased(evt);
+            }
+        });
+        jPanel1.add(Filtrotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 160, 30));
 
         informacion_btn.setBackground(new java.awt.Color(255, 255, 255));
         informacion_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -207,6 +214,17 @@ public class listaPacientes extends javax.swing.JFrame {
         mp.setLocationRelativeTo(null);
     }//GEN-LAST:event_VolverbtnActionPerformed
 
+    private void FiltrotxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltrotxtKeyReleased
+        DefaultTableModel ob = (DefaultTableModel) tabla_tbl.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+        tabla_tbl.setRowSorter(obj);
+
+        String filtro = Filtrotxt.getText();
+        // Filtrar solo por la columna 0 (donde está la cédula)
+        RowFilter<DefaultTableModel, Object> rf = RowFilter.regexFilter("^" + filtro, 0); 
+        obj.setRowFilter(rf);
+    }//GEN-LAST:event_FiltrotxtKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -244,13 +262,13 @@ public class listaPacientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JToggleButton Agregar_btn;
+    public javax.swing.JTextField Filtrotxt;
     public javax.swing.JToggleButton Volverbtn;
     public javax.swing.JToggleButton informacion_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton2;
     public javax.swing.JTable tabla_tbl;
     // End of variables declaration//GEN-END:variables
