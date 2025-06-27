@@ -65,6 +65,9 @@ public class Menu_Principal extends javax.swing.JFrame {
         BTN_RECIPES.setBackground(new java.awt.Color(141, 175, 45));
         BTN_RECIPES.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         BTN_RECIPES.setText("Lista De Recipes");
+        BTN_RECIPES.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.green, java.awt.Color.green));
+        BTN_RECIPES.setBorderPainted(false);
+        BTN_RECIPES.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BTN_RECIPES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_RECIPESActionPerformed(evt);
@@ -105,7 +108,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BTN_RECIPES, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))
@@ -133,7 +136,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addComponent(BT_PRUEBA)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_RECIPES, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,7 +146,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 720));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,11 +176,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        agenda ag = new agenda();
-        this.dispose();
-        ag.setVisible(true);
-        ag.pack();
-        ag.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void BT_PRUEBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_PRUEBAActionPerformed
