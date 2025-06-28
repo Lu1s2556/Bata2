@@ -90,7 +90,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel12.setText("Cedula:");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
-        txtCedula.setForeground(new java.awt.Color(51, 51, 51));
+        txtCedula.setBackground(new java.awt.Color(255, 255, 255));
+        txtCedula.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        txtCedula.setForeground(new java.awt.Color(76, 207, 225));
         txtCedula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel4.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 159, -1));
 
@@ -100,6 +102,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel2.setText("Nombre(s):");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 20));
 
+        nombre_txt.setBackground(new java.awt.Color(255, 255, 255));
+        nombre_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        nombre_txt.setForeground(new java.awt.Color(76, 207, 225));
         nombre_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nombre_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +119,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel3.setText("Edad:");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
 
+        apellido_txt.setBackground(new java.awt.Color(255, 255, 255));
+        apellido_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        apellido_txt.setForeground(new java.awt.Color(76, 207, 225));
         apellido_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         apellido_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +141,9 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jLabel4.setText("Apellido(s):");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
+        apellido_txt1.setBackground(new java.awt.Color(255, 255, 255));
+        apellido_txt1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        apellido_txt1.setForeground(new java.awt.Color(76, 207, 225));
         apellido_txt1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         apellido_txt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +152,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         });
         jPanel4.add(apellido_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 160, -1));
 
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(76, 207, 225));
         btnBuscar.setText("Bucar");
@@ -157,6 +169,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(76, 207, 225));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 10));
 
+        btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
         btnImprimir.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnImprimir.setForeground(new java.awt.Color(76, 207, 225));
         btnImprimir.setText("Imprimir");
@@ -167,12 +180,16 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         });
         jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 570, -1, -1));
 
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(76, 207, 225));
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 710, 340));
 
+        btnLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(76, 207, 225));
         btnLimpiar.setText("Limpiar");
@@ -183,6 +200,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
         });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, -1, -1));
 
+        btnVolverMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnVolverMenu.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnVolverMenu.setForeground(new java.awt.Color(76, 207, 225));
         btnVolverMenu.setText("Menu Principal");

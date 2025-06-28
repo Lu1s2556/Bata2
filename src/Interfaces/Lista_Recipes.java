@@ -181,7 +181,6 @@ public class Lista_Recipes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_recipes = new javax.swing.JTable();
         BTN_VOLVER = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         TXT_filtroCedula = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
@@ -190,12 +189,14 @@ public class Lista_Recipes extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(getPreferredSize());
 
-        Panel_2.setBackground(new java.awt.Color(102, 102, 102));
+        Panel_2.setBackground(new java.awt.Color(177, 234, 242));
         Panel_2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(76, 207, 225));
 
-        TITULO.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        TITULO.setBackground(new java.awt.Color(255, 255, 255));
+        TITULO.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        TITULO.setForeground(new java.awt.Color(255, 255, 255));
         TITULO.setText("Lista de recipes");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -205,14 +206,14 @@ public class Lista_Recipes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(510, 510, 510)
                 .addComponent(TITULO)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addContainerGap(456, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(TITULO)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Panel_1Layout = new javax.swing.GroupLayout(Panel_1);
@@ -228,6 +229,9 @@ public class Lista_Recipes extends javax.swing.JFrame {
 
         Panel_2.add(Panel_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 110));
 
+        Tabla_recipes.setBackground(new java.awt.Color(255, 255, 255));
+        Tabla_recipes.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Tabla_recipes.setForeground(new java.awt.Color(76, 207, 225));
         Tabla_recipes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -251,18 +255,20 @@ public class Lista_Recipes extends javax.swing.JFrame {
 
         Panel_2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 1090, -1));
 
+        BTN_VOLVER.setBackground(new java.awt.Color(255, 255, 255));
+        BTN_VOLVER.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        BTN_VOLVER.setForeground(new java.awt.Color(76, 207, 225));
         BTN_VOLVER.setText("Volver");
         BTN_VOLVER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_VOLVERActionPerformed(evt);
             }
         });
-        Panel_2.add(BTN_VOLVER, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 300, -1));
+        Panel_2.add(BTN_VOLVER, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 630, 300, -1));
 
-        jButton2.setText("jButton2");
-        Panel_2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 630, 310, -1));
-
+        TXT_filtroCedula.setBackground(new java.awt.Color(255, 255, 255));
         TXT_filtroCedula.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        TXT_filtroCedula.setForeground(new java.awt.Color(76, 207, 225));
         TXT_filtroCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 TXT_filtroCedulaKeyReleased(evt);
@@ -270,7 +276,9 @@ public class Lista_Recipes extends javax.swing.JFrame {
         });
         Panel_2.add(TXT_filtroCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 370, -1));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cedula: ");
         Panel_2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 20));
 
@@ -341,7 +349,6 @@ public class Lista_Recipes extends javax.swing.JFrame {
     private javax.swing.JLabel TITULO;
     private javax.swing.JTextField TXT_filtroCedula;
     private javax.swing.JTable Tabla_recipes;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
