@@ -65,11 +65,11 @@ public class listaPacientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Filtrotxt = new javax.swing.JTextField();
         informacion_btn = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_tbl = new javax.swing.JTable();
         Agregar_btn = new javax.swing.JToggleButton();
         Volverbtn = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,7 +113,7 @@ public class listaPacientes extends javax.swing.JFrame {
                 FiltrotxtKeyReleased(evt);
             }
         });
-        jPanel1.add(Filtrotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 160, 30));
+        jPanel1.add(Filtrotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, 30));
 
         informacion_btn.setBackground(new java.awt.Color(255, 255, 255));
         informacion_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -126,13 +126,6 @@ public class listaPacientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(informacion_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 130, 30));
-
-        jToggleButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jToggleButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(76, 207, 225));
-        jToggleButton2.setText("BUSCAR");
-        jToggleButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 60, 30));
 
         tabla_tbl.setBackground(new java.awt.Color(255, 255, 255));
         tabla_tbl.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -155,7 +148,7 @@ public class listaPacientes extends javax.swing.JFrame {
         Agregar_btn.setBackground(new java.awt.Color(255, 255, 255));
         Agregar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         Agregar_btn.setForeground(new java.awt.Color(76, 207, 225));
-        Agregar_btn.setText("AGREGAR PACIENTES");
+        Agregar_btn.setText("AGREGAR PACIENTE");
         Agregar_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Agregar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +168,11 @@ public class listaPacientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Volverbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 540, 90, 30));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("CEDULA:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,10 +264,10 @@ public class listaPacientes extends javax.swing.JFrame {
     public javax.swing.JToggleButton Volverbtn;
     public javax.swing.JToggleButton informacion_btn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton2;
     public javax.swing.JTable tabla_tbl;
     // End of variables declaration//GEN-END:variables
 }
