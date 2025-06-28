@@ -44,14 +44,14 @@
                   <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="Paciente_btn" min="-2" pref="365" max="-2" attributes="0"/>
+                          <Component id="BTN_paciente" min="-2" pref="365" max="-2" attributes="0"/>
                           <EmptySpace pref="318" max="32767" attributes="0"/>
-                          <Component id="jButton5" min="-2" pref="365" max="-2" attributes="0"/>
+                          <Component id="BTN_listaRecipes" min="-2" pref="365" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jButton3" min="-2" pref="365" max="-2" attributes="0"/>
+                          <Component id="BTN_consulta" min="-2" pref="365" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="365" max="-2" attributes="0"/>
+                          <Component id="BTN_Agenda" min="-2" pref="365" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -80,12 +80,12 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="131" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Paciente_btn" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
-                      <Component id="jButton5" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="BTN_paciente" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
+                      <Component id="BTN_listaRecipes" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton3" alignment="3" min="-2" pref="194" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="BTN_consulta" alignment="3" min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="BTN_Agenda" alignment="3" min="-2" pref="194" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
@@ -121,7 +121,7 @@
             <Property name="text" type="java.lang.String" value="Dr: XXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="Paciente_btn">
+        <Component class="javax.swing.JButton" name="BTN_paciente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e1" green="cf" red="4c" type="rgb"/>
@@ -139,13 +139,13 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Paciente_btnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_pacienteActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="BTN_consulta">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e1" green="cf" red="4c" type="rgb"/>
@@ -163,10 +163,10 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_consultaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="BTN_Agenda">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e1" green="cf" red="4c" type="rgb"/>
@@ -184,10 +184,10 @@
             <Property name="horizontalTextPosition" type="int" value="10"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_AgendaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="BTN_listaRecipes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e1" green="cf" red="4c" type="rgb"/>
@@ -206,7 +206,7 @@
             <Property name="iconTextGap" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_listaRecipesActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

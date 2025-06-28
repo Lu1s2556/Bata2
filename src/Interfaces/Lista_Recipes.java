@@ -4,18 +4,62 @@
  */
 package Interfaces;
 
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import conexion.conexionSQL;
+import conexion.DAOrecipes;
+import java.sql.Connection;
+
+
 /**
  *
  * @author Burrx
  */
 public class Lista_Recipes extends javax.swing.JFrame {
+    
+    private javax.swing.table.DefaultTableModel modeloTabla;
+    conexionSQL con = new conexionSQL();
+    Connection cn = con.conectar();
+    
 
-    /**
-     * Creates new form Lista_Recipes
-     */
+
     public Lista_Recipes() {
         initComponents();
+        
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.setColumnIdentifiers(new Object[]{"ID Receta", "Cédula", "Nombre Paciente"});
+        Tabla_recipes.setModel(modeloTabla);
+        
+        cargarDatosRecetas();
     }
+    
+    private void cargarDatosRecetas() {
+    modeloTabla.setRowCount(0); // Limpia filas anteriores si hay
+
+    String sql = "SELECT r.id_recipe, r.cedula, CONCAT(p.nombre, ' ', p.apellido) AS nombre\n" +
+                 "FROM recipe r\n" +
+                 "INNER JOIN paciente p ON r.cedula = p.cedula;";
+
+    try (java.sql.PreparedStatement ps = cn.prepareStatement(sql);
+         java.sql.ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+            Object[] fila = {
+                rs.getInt("id_recipe"),
+                rs.getString("cedula"),
+                rs.getString("nombre")
+            };
+            modeloTabla.addRow(fila);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar las recetas: " + e.getMessage());
+    }
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,13 +74,15 @@ public class Lista_Recipes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        Tabla_recipes = new javax.swing.JTable();
+        BTN_VOLVER = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        TXT_filtroCedula = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
-        setMinimumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(getPreferredSize());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -50,40 +96,56 @@ public class Lista_Recipes extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(526, Short.MAX_VALUE)
+                .addContainerGap(519, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(499, 499, 499))
+                .addGap(506, 506, 506))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 110));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_recipes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Cedula", "Nombre"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabla_recipes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 150, 1090, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 1090, -1));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 300, -1));
+        BTN_VOLVER.setText("Volver");
+        BTN_VOLVER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_VOLVERActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_VOLVER, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 300, -1));
 
         jButton2.setText("jButton2");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 630, 310, -1));
+
+        TXT_filtroCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TXT_filtroCedulaKeyReleased(evt);
+            }
+        });
+        jPanel1.add(TXT_filtroCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 300, -1));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel2.setText("Cedula: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 140, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +160,27 @@ public class Lista_Recipes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TXT_filtroCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_filtroCedulaKeyReleased
+       DefaultTableModel modelo = (DefaultTableModel) Tabla_recipes.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
+        Tabla_recipes.setRowSorter(sorter);
+
+        String filtro = TXT_filtroCedula.getText().trim();
+
+        // Filtra por la columna 1 (Cédula)
+        RowFilter<DefaultTableModel, Object> rf = RowFilter.regexFilter("(?i)^" + filtro, 1);
+        sorter.setRowFilter(rf);
+        
+    }//GEN-LAST:event_TXT_filtroCedulaKeyReleased
+
+    private void BTN_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VOLVERActionPerformed
+        Menu_Principal mp = new Menu_Principal();
+        this.dispose();
+        mp.setVisible(true);
+        mp.pack();
+        mp.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BTN_VOLVERActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,12 +218,14 @@ public class Lista_Recipes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BTN_VOLVER;
+    private javax.swing.JTextField TXT_filtroCedula;
+    private javax.swing.JTable Tabla_recipes;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,10 +34,10 @@ public class Menu_Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Paciente_btn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        BTN_paciente = new javax.swing.JButton();
+        BTN_consulta = new javax.swing.JButton();
+        BTN_Agenda = new javax.swing.JButton();
+        BTN_listaRecipes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,52 +54,52 @@ public class Menu_Principal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Dr: XXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-        Paciente_btn.setBackground(new java.awt.Color(76, 207, 225));
-        Paciente_btn.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        Paciente_btn.setForeground(new java.awt.Color(255, 255, 255));
-        Paciente_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_193612.png"))); // NOI18N
-        Paciente_btn.setText("Nuevo Paciente");
-        Paciente_btn.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        Paciente_btn.addActionListener(new java.awt.event.ActionListener() {
+        BTN_paciente.setBackground(new java.awt.Color(76, 207, 225));
+        BTN_paciente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        BTN_paciente.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_193612.png"))); // NOI18N
+        BTN_paciente.setText("Nuevo Paciente");
+        BTN_paciente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BTN_paciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Paciente_btnActionPerformed(evt);
+                BTN_pacienteActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(76, 207, 225));
-        jButton3.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_192525.png"))); // NOI18N
-        jButton3.setText("Consulta");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BTN_consulta.setBackground(new java.awt.Color(76, 207, 225));
+        BTN_consulta.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        BTN_consulta.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_consulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_192525.png"))); // NOI18N
+        BTN_consulta.setText("Consulta");
+        BTN_consulta.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BTN_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BTN_consultaActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(76, 207, 225));
-        jButton4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_190123.png"))); // NOI18N
-        jButton4.setText("Agenda");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Agenda.setBackground(new java.awt.Color(76, 207, 225));
+        BTN_Agenda.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        BTN_Agenda.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_Agenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_190123.png"))); // NOI18N
+        BTN_Agenda.setText("Agenda");
+        BTN_Agenda.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        BTN_Agenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BTN_AgendaActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(76, 207, 225));
-        jButton5.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_194527.png"))); // NOI18N
-        jButton5.setText("Lista recipes");
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton5.setIconTextGap(0);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        BTN_listaRecipes.setBackground(new java.awt.Color(76, 207, 225));
+        BTN_listaRecipes.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        BTN_listaRecipes.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_listaRecipes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_194527.png"))); // NOI18N
+        BTN_listaRecipes.setText("Lista recipes");
+        BTN_listaRecipes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BTN_listaRecipes.setIconTextGap(0);
+        BTN_listaRecipes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                BTN_listaRecipesActionPerformed(evt);
             }
         });
 
@@ -111,13 +111,13 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addGap(147, 147, 147)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Paciente_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BTN_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BTN_listaRecipes, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BTN_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BTN_Agenda, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(105, 105, 105))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -138,11 +138,11 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Paciente_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTN_paciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_listaRecipes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTN_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_Agenda, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -151,29 +151,37 @@ public class Menu_Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Paciente_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Paciente_btnActionPerformed
+    private void BTN_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_pacienteActionPerformed
         listaPacientes lp = new listaPacientes();
         this.dispose();
         lp.setVisible(true);
         lp.pack();
         lp.setLocationRelativeTo(null);
-    }//GEN-LAST:event_Paciente_btnActionPerformed
+    }//GEN-LAST:event_BTN_pacienteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BTN_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_consultaActionPerformed
         Pagina_Consultas pc = new Pagina_Consultas();
         this.dispose();
         pc.setVisible(true);
         pc.pack();
         pc.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BTN_consultaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void BTN_AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AgendaActionPerformed
+        agenda ag = new agenda();
+        this.dispose();
+        ag.setVisible(true);
+        ag.pack();
+        ag.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BTN_AgendaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void BTN_listaRecipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_listaRecipesActionPerformed
+        Lista_Recipes LR = new Lista_Recipes();
+        this.dispose();
+        LR.setVisible(true);
+        LR.pack();
+        LR.setLocationRelativeTo(null);
+    }//GEN-LAST:event_BTN_listaRecipesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,10 +219,10 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton Paciente_btn;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton BTN_Agenda;
+    private javax.swing.JButton BTN_consulta;
+    private javax.swing.JButton BTN_listaRecipes;
+    public javax.swing.JButton BTN_paciente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
