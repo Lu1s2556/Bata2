@@ -14,6 +14,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
+import java.sql.Date; // ¡Ojo! Este es java.sql.Date, no java.util.Date
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
@@ -24,12 +27,18 @@ public class agenda extends javax.swing.JFrame {
     Connection cn = con.conectar();    
     private DefaultTableModel tb;
     private Object[] g = new Object [5];
+    private JDateChooser fechaChooser;
     
     public agenda() {
         initComponents();
         setLocationRelativeTo(null);
         tb = (DefaultTableModel) Tabla.getModel();
         cargarAgenda();
+        fechaChooser = new JDateChooser();
+        fechaChooser.setDateFormatString("dd/MM/yyyy");
+        fechaChooser.setBounds(100, 100, 150, 30); // Ajusta según tu diseño
+        add(fechaChooser);
+
     }
  private void cargarAgenda() {
     // Limpiar la tabla antes de cargar nuevos datos
@@ -84,8 +93,8 @@ public class agenda extends javax.swing.JFrame {
         buscar_btn = new javax.swing.JButton();
         agregar_btn = new javax.swing.JButton();
         dia = new javax.swing.JComboBox<>();
-        mes = new javax.swing.JComboBox<>();
         salir_btn = new javax.swing.JButton();
+        fecha = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
@@ -139,7 +148,7 @@ public class agenda extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Mes");
+        jLabel6.setText("Fecha");
 
         buscar_btn.setBackground(new java.awt.Color(255, 255, 255));
         buscar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -166,11 +175,6 @@ public class agenda extends javax.swing.JFrame {
         dia.setForeground(new java.awt.Color(76, 207, 225));
         dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", " " }));
 
-        mes.setBackground(new java.awt.Color(255, 255, 255));
-        mes.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        mes.setForeground(new java.awt.Color(76, 207, 225));
-        mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-
         salir_btn.setBackground(new java.awt.Color(255, 255, 255));
         salir_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         salir_btn.setForeground(new java.awt.Color(76, 207, 225));
@@ -180,6 +184,9 @@ public class agenda extends javax.swing.JFrame {
                 salir_btnActionPerformed(evt);
             }
         });
+
+        fecha.setBackground(new java.awt.Color(255, 255, 255));
+        fecha.setForeground(new java.awt.Color(76, 207, 225));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -192,43 +199,39 @@ public class agenda extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel5))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(dia, 0, 1, Short.MAX_VALUE)
-                                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(155, 155, 155))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(70, 70, 70)
                                 .addComponent(agregar_btn)
                                 .addGap(18, 18, 18)
                                 .addComponent(buscar_btn)
                                 .addGap(18, 18, 18)
-                                .addComponent(salir_btn)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(salir_btn))
+                            .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(127, 127, 127)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(215, 215, 215))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -241,11 +244,12 @@ public class agenda extends javax.swing.JFrame {
                     .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6))
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregar_btn)
@@ -324,13 +328,40 @@ public class agenda extends javax.swing.JFrame {
     }//GEN-LAST:event_cedula_txtActionPerformed
 
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
-        g[0] = cedula_txt.getText().trim();
-        g[1] = nombre_txt.getText().trim();
-        g[2] = dia.getSelectedItem().toString();
-        g[3] = hora.getText().trim();
-        g[4] = mes.getSelectedItem().toString();
-        
-        tb.addRow(g);
+       
+         String cedula = cedula_txt.getText().trim();
+    String Hora = hora.getText().trim();
+    String Dia = dia.getSelectedItem().toString();
+    java.util.Date fechaSeleccionada = fechaChooser.getDate();
+
+
+    if (cedula.isEmpty() || Hora.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor completa todos los campos.");
+        return;
+    }
+    // Convertir java.util.Date a java.sql.Date
+    java.sql.Date fecha = new java.sql.Date(fechaSeleccionada.getTime());
+
+    String sql = "INSERT INTO agenda (cedula, hora, dia, mes) VALUES (?, ?, ?, ?)";
+
+    try (PreparedStatement ps = cn.prepareStatement(sql)) {
+        ps.setString(1, cedula);
+        ps.setString(2, Hora);
+        ps.setString(3, Dia);
+        ps.setDate(4, fecha);
+
+        int rowsInserted = ps.executeUpdate();
+        if (rowsInserted > 0) {
+            JOptionPane.showMessageDialog(this, "Cita agregada correctamente.");
+            cargarAgenda(); // Recarga la tabla si tienes ese método
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo agregar la cita.");
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al guardar en la base de datos: " + ex.getMessage());
+    }
+
     }//GEN-LAST:event_agregar_btnActionPerformed
 
     private void buscar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_btnActionPerformed
@@ -401,6 +432,7 @@ public class agenda extends javax.swing.JFrame {
     private javax.swing.JButton buscar_btn;
     private javax.swing.JTextField cedula_txt;
     private javax.swing.JComboBox<String> dia;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField hora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -411,7 +443,6 @@ public class agenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> mes;
     private javax.swing.JTextField nombre_txt;
     private javax.swing.JButton salir_btn;
     // End of variables declaration//GEN-END:variables
