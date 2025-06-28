@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Interfaces.Menu_Principal;
 import conexion.DAOlogin;
 import conexion.conexionSQL;
 import java.sql.Connection;
@@ -35,9 +36,7 @@ public class Login extends javax.swing.JFrame {
 
         PL_BASE = new javax.swing.JPanel();
         PL_izquierda = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         PL_derecha = new javax.swing.JPanel();
         TXT_usuario = new javax.swing.JTextField();
         TXT_clave = new javax.swing.JPasswordField();
@@ -54,37 +53,23 @@ public class Login extends javax.swing.JFrame {
         PL_izquierda.setBackground(new java.awt.Color(76, 207, 225));
         PL_izquierda.setForeground(new java.awt.Color(76, 207, 225));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo medicontrol pequeño color azul.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo azul.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo azul.png"))); // NOI18N
 
         javax.swing.GroupLayout PL_izquierdaLayout = new javax.swing.GroupLayout(PL_izquierda);
         PL_izquierda.setLayout(PL_izquierdaLayout);
         PL_izquierdaLayout.setHorizontalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel7)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         PL_izquierdaLayout.setVerticalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGroup(PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel5))
-                    .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel4))
-                    .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel6)))
-                .addContainerGap(90, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_izquierdaLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(77, 77, 77))
         );
 
         PL_BASE.add(PL_izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 360));
@@ -210,36 +195,19 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+        // 3) Ahora sí: crea y muestra tu login
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
+        });
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
             }
         });
     }
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BTN_entrar;
@@ -251,8 +219,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
