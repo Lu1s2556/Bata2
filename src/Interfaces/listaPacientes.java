@@ -193,7 +193,10 @@ public class listaPacientes extends javax.swing.JFrame {
         
         if (selectedCedu != null) {
             Agregar_Paciente ventana = new Agregar_Paciente(selectedCedu, this);
+            this.dispose();
             ventana.setVisible(true);
+            ventana.pack();
+            ventana.setLocationRelativeTo(null);
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un paciente de la lista.");
         }
@@ -201,7 +204,10 @@ public class listaPacientes extends javax.swing.JFrame {
 
     private void Agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregar_btnActionPerformed
         Agregar_Paciente agregar = new Agregar_Paciente();
+        this.dispose();
         agregar.setVisible(true);
+        agregar.pack();
+        agregar.setLocationRelativeTo(null);
     }//GEN-LAST:event_Agregar_btnActionPerformed
 
     private void VolverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverbtnActionPerformed

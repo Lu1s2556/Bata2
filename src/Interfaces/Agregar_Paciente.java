@@ -4,9 +4,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import conexion.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.*;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
 public class Agregar_Paciente extends javax.swing.JFrame {
 
@@ -132,6 +137,11 @@ public class Agregar_Paciente extends javax.swing.JFrame {
 
         // Mostrar mensaje según el resultado
         if (exito) {
+            listaPacientes lp = new listaPacientes();
+            this.dispose();
+            lp.setVisible(true);
+            lp.pack();
+            lp.setLocationRelativeTo(null);
             JOptionPane.showMessageDialog(null, "Paciente actualizado correctamente");
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar paciente");
@@ -144,6 +154,23 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         private void configurarBotones() {
         modificar_btn = new JButton("Modificar");
         actualizar_btn = new JButton("Actualizar");
+        
+        Font fuenteBoton = new Font("Verdana", Font.BOLD, 12);
+        Color fondo = new Color(255, 255, 255);
+        Color texto = new Color(76, 207, 225);
+        Border borde = BorderFactory.createBevelBorder(BevelBorder.RAISED);
+
+        // Estilos para el botón Modificar
+        modificar_btn.setFont(fuenteBoton);
+        modificar_btn.setBackground(fondo);
+        modificar_btn.setForeground(texto);
+        modificar_btn.setBorder(borde);
+
+        // Estilos para el botón Actualizar
+        actualizar_btn.setFont(fuenteBoton);
+        actualizar_btn.setBackground(fondo);
+        actualizar_btn.setForeground(texto);
+        actualizar_btn.setBorder(borde);
 
         modificar_btn.addActionListener(e -> {
             activarEdicion();
@@ -164,12 +191,12 @@ public class Agregar_Paciente extends javax.swing.JFrame {
             }
         });
 
-        modificar_btn.setBounds(260, 350, 100, 30);
-        actualizar_btn.setBounds(260, 350, 100, 30);
+        modificar_btn.setBounds(130, 50, 130, 30);
+        actualizar_btn.setBounds(130, 50, 130, 30);
 
         // IMPORTANTE: Especificar la posición y tamaño usando AbsoluteConstraints
-        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
-        jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
+        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
+        jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
 
         modificar_btn.setVisible(true);
         actualizar_btn.setVisible(false);
@@ -212,6 +239,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         gruposangre_box = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         nacimiento_dte = new com.toedter.calendar.JDateChooser();
+        Volver_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -390,7 +418,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
                 agr_paciente_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(agr_paciente_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 130, 30));
+        jPanel1.add(agr_paciente_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
 
         gruposangre_box.setBackground(new java.awt.Color(255, 255, 255));
         gruposangre_box.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -409,6 +437,18 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         nacimiento_dte.setForeground(new java.awt.Color(76, 207, 225));
         nacimiento_dte.setDateFormatString("yyyy-MM-dd");
         jPanel1.add(nacimiento_dte, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 140, 30));
+
+        Volver_btn.setBackground(new java.awt.Color(255, 255, 255));
+        Volver_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Volver_btn.setForeground(new java.awt.Color(0, 207, 225));
+        Volver_btn.setText("VOLVER");
+        Volver_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Volver_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Volver_btnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Volver_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -483,7 +523,11 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE");
         }
+        listaPacientes lp = new listaPacientes();
         this.dispose();
+        lp.setVisible(true);
+        lp.pack();
+        lp.setLocationRelativeTo(null);
         
         /*
         String cedula = ci_txt.getText();
@@ -536,6 +580,14 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mujer_chkActionPerformed
 
+    private void Volver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Volver_btnActionPerformed
+        listaPacientes lp = new listaPacientes();
+        this.dispose();
+        lp.setVisible(true);
+        lp.pack();
+        lp.setLocationRelativeTo(null);
+    }//GEN-LAST:event_Volver_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -575,6 +627,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Volver_btn;
     private javax.swing.JButton agr_paciente_btn;
     public javax.swing.JTextField apellido_txt;
     private javax.swing.ButtonGroup buttonGroup_SexCheck;
