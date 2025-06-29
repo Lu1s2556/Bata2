@@ -60,6 +60,7 @@ public class Antecedentes extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_observaciones = new javax.swing.JTextArea();
         boton_guardar = new javax.swing.JButton();
+        Volverbtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -222,6 +223,17 @@ public class Antecedentes extends javax.swing.JFrame {
             }
         });
 
+        Volverbtn.setBackground(new java.awt.Color(255, 255, 255));
+        Volverbtn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Volverbtn.setForeground(new java.awt.Color(76, 207, 225));
+        Volverbtn.setText("VOLVER");
+        Volverbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Volverbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -259,7 +271,9 @@ public class Antecedentes extends javax.swing.JFrame {
                         .addGap(246, 246, 246))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(boton_guardar)
-                        .addGap(255, 255, 255))))
+                        .addGap(110, 110, 110)
+                        .addComponent(Volverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(label_antecedentesmedicos)
@@ -295,8 +309,10 @@ public class Antecedentes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(boton_guardar)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_guardar)
+                    .addComponent(Volverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 610, 420));
@@ -321,7 +337,14 @@ public class Antecedentes extends javax.swing.JFrame {
                 txt_nombre.setText(rs.getString("nombre")+rs.getString("apellido"));
                 txt_sexo.setText(rs.getString("sexo"));
                 txt_gruposanguineo.setText(rs.getString("grupo sanguineo"));
-                txt_edad.setText(rs.getString("fecha de nacimiento"));
+                 Date fechaNac = rs.getDate("fecha de nacimiento");
+                   if (fechaNac != null) {
+                      LocalDate nacimiento = fechaNac.toLocalDate();
+                      int edad = Period.between(nacimiento, LocalDate.now()).getYears();
+                      txt_edad.setText(String.valueOf(edad));
+              } else {
+                      txt_edad.setText("");
+        }
                 
             } else {
                 JOptionPane.showMessageDialog(null,"Paciente no encontrado");
@@ -394,6 +417,14 @@ public class Antecedentes extends javax.swing.JFrame {
     
     }//GEN-LAST:event_boton_guardarActionPerformed
 
+    private void VolverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverbtnActionPerformed
+        Menu_Principal mp = new Menu_Principal();
+        this.dispose();
+        mp.setVisible(true);
+        mp.pack();
+        mp.setLocationRelativeTo(null);
+    }//GEN-LAST:event_VolverbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -432,6 +463,7 @@ public class Antecedentes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_Titulo;
+    public javax.swing.JToggleButton Volverbtn;
     private javax.swing.JButton boton_buscar;
     private javax.swing.JButton boton_guardar;
     private javax.swing.JPanel jPanel1;
