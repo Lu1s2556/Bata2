@@ -48,17 +48,22 @@ public class agenda extends javax.swing.JFrame {
                a.fecha
           FROM agenda a
           JOIN paciente p ON a.cedula = p.cedula
+          WHERE a.fecha >= CURDATE()
+          ORDER BY a.fecha ASC
         """;
 
     try (PreparedStatement ps = cn.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
         while (rs.next()) {
             tb.addRow(new Object[]{
                 rs.getString("cedula"),
                 rs.getString("nombre_completo"),
                 rs.getString("hora"),
                 rs.getString("dia"),
-                new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("fecha"))
+                sdf.format(rs.getDate("fecha")) // Fecha formateada
             });
         }
     } catch (SQLException ex) {
