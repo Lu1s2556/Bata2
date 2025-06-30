@@ -26,7 +26,7 @@ public class agenda extends javax.swing.JFrame {
      conexionSQL con = new conexionSQL();
     Connection cn = con.conectar();    
     private DefaultTableModel tb;
-    private Object[] g = new Object [5];
+    private Object[] g = new Object [4];
     private JDateChooser fechaChooser;
     
     public agenda() {
@@ -44,7 +44,6 @@ public class agenda extends javax.swing.JFrame {
         SELECT a.cedula,
                CONCAT(p.nombre, ' ', p.apellido) AS nombre_completo,
                a.hora,
-               a.dia,
                a.fecha
           FROM agenda a
           JOIN paciente p ON a.cedula = p.cedula
@@ -62,7 +61,6 @@ public class agenda extends javax.swing.JFrame {
                 rs.getString("cedula"),
                 rs.getString("nombre_completo"),
                 rs.getString("hora"),
-                rs.getString("dia"),
                 sdf.format(rs.getDate("fecha")) // Fecha formateada
             });
         }
@@ -88,12 +86,10 @@ public class agenda extends javax.swing.JFrame {
         hora = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         buscar_btn = new javax.swing.JButton();
         agregar_btn = new javax.swing.JButton();
-        dia = new javax.swing.JComboBox<>();
         salir_btn = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
@@ -111,7 +107,7 @@ public class agenda extends javax.swing.JFrame {
         jLabel1.setText("Agenda Cita");
 
         cedula_txt.setBackground(new java.awt.Color(255, 255, 255));
-        cedula_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        cedula_txt.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         cedula_txt.setForeground(new java.awt.Color(76, 207, 225));
         cedula_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,10 +116,10 @@ public class agenda extends javax.swing.JFrame {
         });
 
         nombre_txt.setBackground(new java.awt.Color(255, 255, 255));
-        nombre_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        nombre_txt.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
         hora.setBackground(new java.awt.Color(255, 255, 255));
-        hora.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        hora.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         hora.setForeground(new java.awt.Color(76, 207, 225));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -135,11 +131,6 @@ public class agenda extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre y Apellido");
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Dia");
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -171,11 +162,6 @@ public class agenda extends javax.swing.JFrame {
             }
         });
 
-        dia.setBackground(new java.awt.Color(255, 255, 255));
-        dia.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        dia.setForeground(new java.awt.Color(76, 207, 225));
-        dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", " " }));
-
         salir_btn.setBackground(new java.awt.Color(255, 255, 255));
         salir_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         salir_btn.setForeground(new java.awt.Color(76, 207, 225));
@@ -194,67 +180,68 @@ public class agenda extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(agregar_btn)
-                                .addGap(18, 18, 18)
-                                .addComponent(buscar_btn)
-                                .addGap(18, 18, 18)
-                                .addComponent(salir_btn))
-                            .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel1)))
-                        .addContainerGap(255, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(30, 30, 30)
+                                .addComponent(agregar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(168, 168, 168))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(buscar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(171, 171, 171)
+                                .addComponent(salir_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(37, 37, 37))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(jLabel1)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cedula_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(38, 38, 38)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6))
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregar_btn)
                     .addComponent(buscar_btn)
+                    .addComponent(agregar_btn)
                     .addComponent(salir_btn))
                 .addContainerGap())
         );
@@ -272,14 +259,14 @@ public class agenda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cedula", "Nombre y Apellido", "Dia", "Hora", "Fecha"
+                "Cedula", "Nombre y Apellido", "Hora", "Fecha"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -330,9 +317,8 @@ public class agenda extends javax.swing.JFrame {
 
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
        
-         String cedula = cedula_txt.getText().trim();
+    String cedula = cedula_txt.getText().trim();
     String Hora = hora.getText().trim();
-    String Dia = dia.getSelectedItem().toString();
     java.util.Date fechaSeleccionada = fecha.getDate();
 
     // Validación
@@ -344,13 +330,12 @@ public class agenda extends javax.swing.JFrame {
     // Convertir fecha de util a SQL
     java.sql.Date fechaSQL = new java.sql.Date(fechaSeleccionada.getTime());
 
-    String sql = "INSERT INTO agenda (cedula, hora, dia, fecha) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO agenda (cedula, hora, fecha) VALUES (?, ?, ?)";
 
     try (PreparedStatement ps = cn.prepareStatement(sql)) {
         ps.setString(1, cedula);
         ps.setString(2, Hora);
-        ps.setString(3, Dia);
-        ps.setDate(4, fechaSQL);
+        ps.setDate(3, fechaSQL);
 
         int rowsInserted = ps.executeUpdate();
         if (rowsInserted > 0) {
@@ -432,13 +417,11 @@ public class agenda extends javax.swing.JFrame {
     private javax.swing.JButton agregar_btn;
     private javax.swing.JButton buscar_btn;
     private javax.swing.JTextField cedula_txt;
-    private javax.swing.JComboBox<String> dia;
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField hora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
