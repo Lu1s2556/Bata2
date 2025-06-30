@@ -19,6 +19,7 @@ public class listaPacientes extends javax.swing.JFrame {
         cargarPacientesEnTabla();
     }
     
+    // Mostrar a los pacientes en una tabla mostrando principalmente solo 4 atributos principales
     private void cargarPacientesEnTabla() {
         DAOPacientes dao = new DAOPacientes(cn);
         List<Pacientes> lista = dao.obtenerTodosLosPacientes();
@@ -40,7 +41,7 @@ public class listaPacientes extends javax.swing.JFrame {
         cargarPacientesEnTabla();
     }
 
-
+    // Se busca la informacion del paciente seleccionado buscando la informacion por su numero de cedula como clave primaria.
     private String seleccionCedu(){
         int filaSelect = tabla_tbl.getSelectedRow();
         
@@ -188,6 +189,7 @@ public class listaPacientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Accion del boton información. Para ver los datos detallados de un paciente.
     private void informacion_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informacion_btnActionPerformed
         String selectedCedu = seleccionCedu();
         
@@ -202,6 +204,7 @@ public class listaPacientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_informacion_btnActionPerformed
 
+    // Accion del boton agregar paciente
     private void Agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agregar_btnActionPerformed
         Agregar_Paciente agregar = new Agregar_Paciente();
         this.dispose();
@@ -210,6 +213,7 @@ public class listaPacientes extends javax.swing.JFrame {
         agregar.setLocationRelativeTo(null);
     }//GEN-LAST:event_Agregar_btnActionPerformed
 
+    // Boton volver
     private void VolverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverbtnActionPerformed
         Menu_Principal mp = new Menu_Principal();
         this.dispose();
@@ -218,6 +222,7 @@ public class listaPacientes extends javax.swing.JFrame {
         mp.setLocationRelativeTo(null);
     }//GEN-LAST:event_VolverbtnActionPerformed
 
+    // Filtrar los pacientes por el numero de cedula
     private void FiltrotxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FiltrotxtKeyReleased
         DefaultTableModel ob = (DefaultTableModel) tabla_tbl.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);

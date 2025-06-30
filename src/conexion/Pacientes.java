@@ -1,5 +1,7 @@
 package conexion;
 
+// Los atributos de los pacientes, y los getters y setters de estos.
+
 import java.sql.Date;
 
 public class Pacientes {

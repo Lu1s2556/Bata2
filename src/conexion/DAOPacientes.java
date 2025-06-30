@@ -1,16 +1,19 @@
 package conexion;
 
+// DAO de pacientes (DAO: Objeto de Acceso a Datos)
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DAOPacientes {
     private Connection cn;
-
+    
     public DAOPacientes(Connection cn) {
         this.cn = cn;
     }
 
+    // Insertar informacion del paciente
     public boolean agregarPaciente(Pacientes paciente) {
         String sql = "INSERT INTO paciente(cedula, nombre, apellido, sexo, `grupo sanguineo`, telefono, direccion, email, `fecha de nacimiento`) VALUES (?,?,?,?,?,?,?,?,?)";
         
@@ -32,6 +35,7 @@ public class DAOPacientes {
         }
     }
     
+    // Actualizacion de los datos del paciente
     public boolean actualizarPaciente(Pacientes paciente, String cedulaAnterior) {
         String sql = "UPDATE paciente SET nombre=?, apellido=?, sexo=?, `grupo sanguineo`=?, telefono=?, direccion=?, email=?, `fecha de nacimiento`=?, cedula=? WHERE cedula=?";
 
@@ -59,6 +63,7 @@ public class DAOPacientes {
         }
     }
     
+    // Obtener los datos del paciente para la lista de pacientes
     public List<Pacientes> obtenerTodosLosPacientes() {
         List<Pacientes> listaPacientes = new ArrayList<>();
         String sql = "SELECT * FROM paciente";
@@ -86,6 +91,7 @@ public class DAOPacientes {
         return listaPacientes;
     }
     
+    // Obtencion de los pacientes para ver la información
     public Pacientes obtenerPaciente(String cedula) {
         String sql = "SELECT * FROM paciente WHERE cedula = ?";
 

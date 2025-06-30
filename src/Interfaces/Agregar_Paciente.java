@@ -34,7 +34,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     private JButton actualizar_btn;
     private listaPacientes padre;
     
-    // Ver informacion sin modificar
+    // Ventana de información, solo lectura
     public Agregar_Paciente (String cedula, listaPacientes padre) {
         initComponents();
         this.padre = padre;
@@ -46,6 +46,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         soloLectura();
     }
     
+    // Metodo para cargar los datos de un paciente existente
     private void cargarDatos(String cedula){
         DAOPacientes pacientesDAO = new DAOPacientes(cn);
         Pacientes paciente = pacientesDAO.obtenerPaciente(cedula);
@@ -73,6 +74,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         }
     }
     
+    // Los datos en solo lectura
     private void soloLectura() {
         // Deshabilitar edición en los JTextField
         ci_txt.setEditable(false);
@@ -92,6 +94,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
 
     }
 
+    // Para editar los datos de un paciente ya existente
     private void activarEdicion() {
         ci_txt.setEditable(true);
         nombre_txt.setEditable(true);
@@ -172,6 +175,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         actualizar_btn.setForeground(texto);
         actualizar_btn.setBorder(borde);
 
+        // Acción del boton modificar
         modificar_btn.addActionListener(e -> {
             activarEdicion();
             modificar_btn.setVisible(false);
@@ -179,9 +183,10 @@ public class Agregar_Paciente extends javax.swing.JFrame {
             agr_paciente_btn.setVisible(false);
             JOptionPane.showMessageDialog(null, "Puede actualizar los datos");
         });
-
+        
+        // Acción del boton actualizar
         actualizar_btn.addActionListener(e -> {
-            actualizarPaciente(); // Tu método existente
+            actualizarPaciente();
             soloLectura();
             actualizar_btn.setVisible(false);
             modificar_btn.setVisible(true);
@@ -190,11 +195,11 @@ public class Agregar_Paciente extends javax.swing.JFrame {
                 padre.recargarPacientes();
             }
         });
-
+        
+        // Posiciones y limites de los botones
         modificar_btn.setBounds(130, 50, 130, 30);
         actualizar_btn.setBounds(130, 50, 130, 30);
-
-        // IMPORTANTE: Especificar la posición y tamaño usando AbsoluteConstraints
+        
         jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
         jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
 
