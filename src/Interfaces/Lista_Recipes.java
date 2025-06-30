@@ -185,17 +185,19 @@ public class Lista_Recipes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
-        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setMaximumSize(new java.awt.Dimension(1092, 572));
+        setMinimumSize(new java.awt.Dimension(1092, 572));
         setPreferredSize(getPreferredSize());
 
         Panel_2.setBackground(new java.awt.Color(177, 234, 242));
+        Panel_2.setMinimumSize(new java.awt.Dimension(1092, 572));
+        Panel_2.setPreferredSize(new java.awt.Dimension(1092, 572));
         Panel_2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(76, 207, 225));
 
         TITULO.setBackground(new java.awt.Color(255, 255, 255));
-        TITULO.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        TITULO.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
         TITULO.setForeground(new java.awt.Color(255, 255, 255));
         TITULO.setText("Lista de recipes");
 
@@ -204,16 +206,16 @@ public class Lista_Recipes extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(510, 510, 510)
+                .addGap(326, 326, 326)
                 .addComponent(TITULO)
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addComponent(TITULO)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Panel_1Layout = new javax.swing.GroupLayout(Panel_1);
@@ -253,7 +255,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_recipes);
 
-        Panel_2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 1090, -1));
+        Panel_2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 820, 290));
 
         BTN_VOLVER.setBackground(new java.awt.Color(255, 255, 255));
         BTN_VOLVER.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -264,7 +266,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
                 BTN_VOLVERActionPerformed(evt);
             }
         });
-        Panel_2.add(BTN_VOLVER, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 630, 300, -1));
+        Panel_2.add(BTN_VOLVER, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 320, 40));
 
         TXT_filtroCedula.setBackground(new java.awt.Color(255, 255, 255));
         TXT_filtroCedula.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -274,13 +276,13 @@ public class Lista_Recipes extends javax.swing.JFrame {
                 TXT_filtroCedulaKeyReleased(evt);
             }
         });
-        Panel_2.add(TXT_filtroCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 370, -1));
+        Panel_2.add(TXT_filtroCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 370, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cedula: ");
-        Panel_2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 20));
+        Panel_2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
