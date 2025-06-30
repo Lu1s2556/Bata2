@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author DELL
+ * @author 
  */
 public class Antecedentes extends javax.swing.JFrame {
 
     /**
-     * Creates new form Antecedentes2
+     * Creates new form Antecedentes
      */
     public Antecedentes() {
         initComponents();
@@ -321,6 +321,8 @@ public class Antecedentes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
+       
+       //Conexion a la base de datos y buscar los datos del paciente segun su cedula
        String cedula = txt_cedula.getText();
         try {
             
@@ -329,15 +331,16 @@ public class Antecedentes extends javax.swing.JFrame {
             String pass = "bata31@";
             Connection cn = DriverManager.getConnection(url,usuario,pass);
                     
-            
+            //primera solicitud de la base de datos, buscando los datos desde la tabla pacientes segun la cedula
             PreparedStatement pst = cn.prepareStatement("SELECT * FROM paciente WHERE cedula = ?");
             pst.setString(1, cedula);
             ResultSet rs= pst.executeQuery();
              if(rs.next()) {
-                txt_nombre.setText(rs.getString("nombre")+rs.getString("apellido"));
+                txt_nombre.setText(rs.getString("nombre")+ " " + rs.getString("apellido"));
                 txt_sexo.setText(rs.getString("sexo"));
                 txt_gruposanguineo.setText(rs.getString("grupo sanguineo"));
                  Date fechaNac = rs.getDate("fecha de nacimiento");
+                   //Tomar la fecha de nacimiento y convertirla en años para mostrar
                    if (fechaNac != null) {
                       LocalDate nacimiento = fechaNac.toLocalDate();
                       int edad = Period.between(nacimiento, LocalDate.now()).getYears();
@@ -349,6 +352,7 @@ public class Antecedentes extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null,"Paciente no encontrado");
             }
+            //segunda solicitud, pidiendo los datos desde antecedentes segun la cedula
             PreparedStatement ps2 = cn.prepareStatement("SELECT cedula, historial, enfermedades, observaciones FROM antecedentes WHERE cedula = ?");
             ps2.setString(1, cedula);
             ResultSet rs2 = ps2.executeQuery();
@@ -373,15 +377,28 @@ public class Antecedentes extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_buscarActionPerformed
 
     private void boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_guardarActionPerformed
+   
+    //Boton para guardar los antecedentes y actualizarlos en caso de querer editarse.
     String cedula = txt_cedula.getText().trim();
     String ant_med = txt_antecedentesmedicos.getText().trim();
     String enfermedades = txt_enfermedades.getText().trim();
     String observaciones = txt_observaciones.getText().trim();
         try {
+            //Conexion a la base de datos
             String url= "jdbc:mysql://localhost:3306/medicontrol";
             String usuario =  "medicontrol";
             String pass = "bata31@";
             Connection cn = DriverManager.getConnection(url,usuario,pass);
+            //Verificar que la cedula en caso de haber sido cambiada por error, no se retorne si es incorrecta.
+            PreparedStatement checkPaciente = cn.prepareStatement("SELECT * FROM paciente WHERE cedula = ?");
+            checkPaciente.setString(1, cedula);
+            ResultSet resPaciente = checkPaciente.executeQuery();
+
+           if (!resPaciente.next()) {
+            JOptionPane.showMessageDialog(this, "Esa cédula no está registrada como paciente. Ingrese la cedula correctamente.");
+            return; //salir del método para no insertar nada
+           }
+           //Actualizacion de los antecedentes
             PreparedStatement pst = cn.prepareStatement("Select * from antecedentes where cedula = ?");
             pst.setString(1,cedula);
             ResultSet rs= pst.executeQuery();
@@ -395,6 +412,7 @@ public class Antecedentes extends javax.swing.JFrame {
                 psupdate.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Informacion actualizada correctamente");
             }else {
+                //Primer guardado de antecedentes (cuando todo esta vacio)
                 PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (id_antecedentes, cedula, historial, enfermedades, observaciones) values (?, ?, ?, ?, ?)");
                 psInsert.setInt(1,0);
                 psInsert.setString(2,cedula);
@@ -402,7 +420,7 @@ public class Antecedentes extends javax.swing.JFrame {
                 psInsert.setString(4,enfermedades);
                 psInsert.setString(5,observaciones);
                 psInsert.executeUpdate();
-                JOptionPane.showMessageDialog(this, "antecedentes guardados correctamente");
+                JOptionPane.showMessageDialog(this, "Antecedentes guardados correctamente");
             }
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this, "Error al guardar: "+e.getMessage());
@@ -418,6 +436,8 @@ public class Antecedentes extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_guardarActionPerformed
 
     private void VolverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverbtnActionPerformed
+       
+        //Boton para volver al menu principal
         Menu_Principal mp = new Menu_Principal();
         this.dispose();
         mp.setVisible(true);
