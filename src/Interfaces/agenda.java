@@ -34,11 +34,7 @@ public class agenda extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         tb = (DefaultTableModel) Tabla.getModel();
         cargarAgenda();
-        fechaChooser = new JDateChooser();
-        fechaChooser.setDateFormatString("dd/MM/yyyy");
-        fechaChooser.setBounds(100, 100, 150, 30); // Ajusta según tu diseño
-        add(fechaChooser);
-
+      
     }
  private void cargarAgenda() {
     // Limpiar la tabla antes de cargar nuevos datos
@@ -49,7 +45,7 @@ public class agenda extends javax.swing.JFrame {
                CONCAT(p.nombre, ' ', p.apellido) AS nombre_completo,
                a.hora,
                a.dia,
-               a.mes
+               a.fecha
           FROM agenda a
           JOIN paciente p ON a.cedula = p.cedula
         """;
@@ -62,7 +58,7 @@ public class agenda extends javax.swing.JFrame {
                 rs.getString("nombre_completo"),
                 rs.getString("hora"),
                 rs.getString("dia"),
-                rs.getString("mes")
+                new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("fecha"))
             });
         }
     } catch (SQLException ex) {
@@ -214,7 +210,7 @@ public class agenda extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(127, 127, 127)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
+                        .addContainerGap(255, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,8 +222,8 @@ public class agenda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(215, 215, 215))
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(168, 168, 168))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +267,7 @@ public class agenda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cedula", "Nombre y Apellido", "Dia", "Hora", "Mes"
+                "Cedula", "Nombre y Apellido", "Dia", "Hora", "Fecha"
             }
         ) {
             Class[] types = new Class [] {
@@ -332,28 +328,29 @@ public class agenda extends javax.swing.JFrame {
          String cedula = cedula_txt.getText().trim();
     String Hora = hora.getText().trim();
     String Dia = dia.getSelectedItem().toString();
-    java.util.Date fechaSeleccionada = fechaChooser.getDate();
+    java.util.Date fechaSeleccionada = fecha.getDate();
 
-
-    if (cedula.isEmpty() || Hora.isEmpty()) {
+    // Validación
+    if (cedula.isEmpty() || Hora.isEmpty() || fechaSeleccionada == null) {
         JOptionPane.showMessageDialog(this, "Por favor completa todos los campos.");
         return;
     }
-    // Convertir java.util.Date a java.sql.Date
-    java.sql.Date fecha = new java.sql.Date(fechaSeleccionada.getTime());
 
-    String sql = "INSERT INTO agenda (cedula, hora, dia, mes) VALUES (?, ?, ?, ?)";
+    // Convertir fecha de util a SQL
+    java.sql.Date fechaSQL = new java.sql.Date(fechaSeleccionada.getTime());
+
+    String sql = "INSERT INTO agenda (cedula, hora, dia, fecha) VALUES (?, ?, ?, ?)";
 
     try (PreparedStatement ps = cn.prepareStatement(sql)) {
         ps.setString(1, cedula);
         ps.setString(2, Hora);
         ps.setString(3, Dia);
-        ps.setDate(4, fecha);
+        ps.setDate(4, fechaSQL);
 
         int rowsInserted = ps.executeUpdate();
         if (rowsInserted > 0) {
             JOptionPane.showMessageDialog(this, "Cita agregada correctamente.");
-            cargarAgenda(); // Recarga la tabla si tienes ese método
+            cargarAgenda(); // Recarga la tabla
         } else {
             JOptionPane.showMessageDialog(this, "No se pudo agregar la cita.");
         }
@@ -361,7 +358,6 @@ public class agenda extends javax.swing.JFrame {
         ex.printStackTrace();
         JOptionPane.showMessageDialog(this, "Error al guardar en la base de datos: " + ex.getMessage());
     }
-
     }//GEN-LAST:event_agregar_btnActionPerformed
 
     private void buscar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_btnActionPerformed
