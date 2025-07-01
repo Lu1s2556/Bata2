@@ -78,7 +78,6 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
         apellido_txt1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -104,10 +103,10 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cedula:");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
 
         txtCedula.setBackground(new java.awt.Color(255, 255, 255));
         txtCedula.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -116,10 +115,10 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
         jPanel4.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 159, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre(s):");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 20));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 20));
 
         nombre_txt.setBackground(new java.awt.Color(255, 255, 255));
         nombre_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -128,16 +127,16 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
         jPanel4.add(nombre_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 160, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Edad:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, -1));
 
         apellido_txt.setBackground(new java.awt.Color(255, 255, 255));
-        apellido_txt.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        apellido_txt.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         apellido_txt.setForeground(new java.awt.Color(76, 207, 225));
         apellido_txt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.add(apellido_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, 40, -1));
+        jPanel4.add(apellido_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 40, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
@@ -146,46 +145,44 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 280, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido(s):");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
         apellido_txt1.setBackground(new java.awt.Color(255, 255, 255));
-        apellido_txt1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        apellido_txt1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         apellido_txt1.setForeground(new java.awt.Color(76, 207, 225));
         apellido_txt1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.add(apellido_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 160, -1));
+        jPanel4.add(apellido_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 160, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 0, 840, 180));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Recipe:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 90, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 100, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 10));
-
         btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
-        btnImprimir.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnImprimir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnImprimir.setForeground(new java.awt.Color(76, 207, 225));
         btnImprimir.setText("Imprimir");
-        jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 570, 200, -1));
+        jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 570, 200, -1));
 
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(76, 207, 225));
         jTextArea1.setRows(5);
+        jTextArea1.setPreferredSize(new java.awt.Dimension(392, 119));
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 710, 340));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 560, 340));
 
         btnVolverMenu.setBackground(new java.awt.Color(255, 255, 255));
-        btnVolverMenu.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnVolverMenu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnVolverMenu.setForeground(new java.awt.Color(76, 207, 225));
         btnVolverMenu.setText("Volver Lista");
         btnVolverMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +244,6 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
     public javax.swing.JTextField nombre_txt;
     private javax.swing.JTextField txtCedula;
