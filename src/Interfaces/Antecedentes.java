@@ -38,12 +38,10 @@ public class Antecedentes extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         obtenerAntecedentes(cedula);
-        boton_guardar.setVisible(false);
         boton_buscar.setVisible(false);
         txt_cedula.setVisible(false);
         label_cedula.setVisible(false);
         configurarBotones();
-        soloLectura();
     }
     
     // Los datos en solo lectura

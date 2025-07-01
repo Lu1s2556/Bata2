@@ -36,7 +36,7 @@ public class Login extends javax.swing.JFrame {
 
         PL_BASE = new javax.swing.JPanel();
         PL_izquierda = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         PL_derecha = new javax.swing.JPanel();
         TXT_usuario = new javax.swing.JTextField();
         TXT_clave = new javax.swing.JPasswordField();
@@ -53,23 +53,23 @@ public class Login extends javax.swing.JFrame {
         PL_izquierda.setBackground(new java.awt.Color(76, 207, 225));
         PL_izquierda.setForeground(new java.awt.Color(76, 207, 225));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo azul.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo_trasparente.png"))); // NOI18N
 
         javax.swing.GroupLayout PL_izquierdaLayout = new javax.swing.GroupLayout(PL_izquierda);
         PL_izquierda.setLayout(PL_izquierdaLayout);
         PL_izquierdaLayout.setHorizontalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_izquierdaLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel7)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(jLabel4)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         PL_izquierdaLayout.setVerticalGroup(
             PL_izquierdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_izquierdaLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(77, 77, 77))
+            .addGroup(PL_izquierdaLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jLabel4)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         PL_BASE.add(PL_izquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 360));
@@ -120,16 +120,18 @@ public class Login extends javax.swing.JFrame {
         PL_derechaLayout.setHorizontalGroup(
             PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PL_derechaLayout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(153, Short.MAX_VALUE)
                 .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
                         .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TXT_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(145, 145, 145))
+                            .addComponent(jLabel3)
+                            .addGroup(PL_derechaLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel1)))
+                        .addGap(148, 148, 148))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
                         .addComponent(BTN_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(198, 198, 198))))
@@ -214,6 +216,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,7 +48,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         BTN_paciente.setBackground(new java.awt.Color(76, 207, 225));
         BTN_paciente.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         BTN_paciente.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_193612.png"))); // NOI18N
+        BTN_paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Icono_paciente.png"))); // NOI18N
         BTN_paciente.setText("Nuevo Paciente");
         BTN_paciente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         BTN_paciente.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +60,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         BTN_consulta.setBackground(new java.awt.Color(76, 207, 225));
         BTN_consulta.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         BTN_consulta.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_consulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_192525.png"))); // NOI18N
+        BTN_consulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Icono_consulta.png"))); // NOI18N
         BTN_consulta.setText("Consulta");
         BTN_consulta.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         BTN_consulta.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +72,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         BTN_Agenda.setBackground(new java.awt.Color(76, 207, 225));
         BTN_Agenda.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         BTN_Agenda.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Agenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_190123.png"))); // NOI18N
+        BTN_Agenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Icono_agenda.png"))); // NOI18N
         BTN_Agenda.setText("Agenda");
         BTN_Agenda.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         BTN_Agenda.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +84,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         BTN_listaRecipes.setBackground(new java.awt.Color(76, 207, 225));
         BTN_listaRecipes.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         BTN_listaRecipes.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_listaRecipes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Copilot_20250627_194527.png"))); // NOI18N
+        BTN_listaRecipes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Icono_lista_paciente.png"))); // NOI18N
         BTN_listaRecipes.setText("Lista recipes");
         BTN_listaRecipes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         BTN_listaRecipes.setIconTextGap(0);
@@ -115,12 +115,12 @@ public class Menu_Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(425, 425, 425)
-                        .addComponent(jLabel2))
+                        .addGap(459, 459, 459)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(470, 470, 470)
-                        .addComponent(jLabel1)))
-                .addContainerGap(429, Short.MAX_VALUE))
+                        .addGap(411, 411, 411)
+                        .addComponent(jLabel2)))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

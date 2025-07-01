@@ -548,7 +548,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE");
         }
-        Antecedentes an = new Antecedentes();
+        Antecedentes an = new Antecedentes(cedula);
         this.dispose();
         an.setVisible(true);
         an.pack();
