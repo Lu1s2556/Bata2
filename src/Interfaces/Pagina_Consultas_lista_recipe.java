@@ -28,6 +28,7 @@ public class Pagina_Consultas_lista_recipe extends javax.swing.JFrame {
      * Creates new form Pagina_Consultas
      */
     public Pagina_Consultas_lista_recipe(int idrecipe) {
+        setUndecorated(true);
         initComponents();
         cargarDatosRecipe(idrecipe);
     }

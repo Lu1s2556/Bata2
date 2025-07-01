@@ -53,6 +53,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
         
 
         // 2) Carga la GUI (NetBeans auto‐gen)
+        setUndecorated(true);
         initComponents();
         SwingUtilities.updateComponentTreeUI(this);
 
@@ -258,9 +259,9 @@ public class Lista_Recipes extends javax.swing.JFrame {
         Panel_2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 820, 290));
 
         BTN_VOLVER.setBackground(new java.awt.Color(255, 255, 255));
-        BTN_VOLVER.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        BTN_VOLVER.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         BTN_VOLVER.setForeground(new java.awt.Color(76, 207, 225));
-        BTN_VOLVER.setText("Volver");
+        BTN_VOLVER.setText("Menu Principal");
         BTN_VOLVER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_VOLVERActionPerformed(evt);

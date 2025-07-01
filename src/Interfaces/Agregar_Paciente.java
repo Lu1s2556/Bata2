@@ -20,7 +20,8 @@ public class Agregar_Paciente extends javax.swing.JFrame {
     
     private listaPacientes ventana;
     
-    public Agregar_Paciente() {        
+    public Agregar_Paciente() {   
+        setUndecorated(true);
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

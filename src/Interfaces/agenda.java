@@ -30,6 +30,7 @@ public class agenda extends javax.swing.JFrame {
     private JDateChooser fechaChooser;
     
     public agenda() {
+        setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
         tb = (DefaultTableModel) Tabla.getModel();
@@ -143,7 +144,7 @@ public class agenda extends javax.swing.JFrame {
         jLabel6.setText("Fecha");
 
         buscar_btn.setBackground(new java.awt.Color(255, 255, 255));
-        buscar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        buscar_btn.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         buscar_btn.setForeground(new java.awt.Color(76, 207, 225));
         buscar_btn.setText("Buscar");
         buscar_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -153,9 +154,9 @@ public class agenda extends javax.swing.JFrame {
         });
 
         agregar_btn.setBackground(new java.awt.Color(255, 255, 255));
-        agregar_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        agregar_btn.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         agregar_btn.setForeground(new java.awt.Color(76, 207, 225));
-        agregar_btn.setText("agregar");
+        agregar_btn.setText("Agendar");
         agregar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregar_btnActionPerformed(evt);
@@ -163,7 +164,7 @@ public class agenda extends javax.swing.JFrame {
         });
 
         salir_btn.setBackground(new java.awt.Color(255, 255, 255));
-        salir_btn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        salir_btn.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         salir_btn.setForeground(new java.awt.Color(76, 207, 225));
         salir_btn.setText("Salir");
         salir_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +239,7 @@ public class agenda extends javax.swing.JFrame {
                         .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
                         .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscar_btn)
                     .addComponent(agregar_btn)

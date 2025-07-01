@@ -30,11 +30,13 @@ public class Antecedentes extends javax.swing.JFrame {
      * Creates new form Antecedentes
      */
     public Antecedentes() {
+        setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
     }
     
     public Antecedentes(String cedula) {
+        setUndecorated(true);
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         obtenerAntecedentes(cedula);

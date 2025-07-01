@@ -19,9 +19,16 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        setUndecorated(true);
         initComponents();
         pack();
         setLocationRelativeTo(null);
+        BTN_Salir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            System.exit(0); // Cierra toda la aplicación
+        }
+});
+
        
     }
 
@@ -44,6 +51,7 @@ public class Login extends javax.swing.JFrame {
         BTN_entrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        BTN_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,26 +123,35 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
 
+        BTN_Salir.setBackground(new java.awt.Color(255, 255, 255));
+        BTN_Salir.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        BTN_Salir.setForeground(new java.awt.Color(76, 207, 225));
+        BTN_Salir.setText("Salir");
+        BTN_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PL_derechaLayout = new javax.swing.GroupLayout(PL_derecha);
         PL_derecha.setLayout(PL_derechaLayout);
         PL_derechaLayout.setHorizontalGroup(
             PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PL_derechaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
                 .addContainerGap(153, Short.MAX_VALUE)
                 .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
-                        .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TXT_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addGroup(PL_derechaLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel1)))
-                        .addGap(148, 148, 148))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PL_derechaLayout.createSequentialGroup()
-                        .addComponent(BTN_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(198, 198, 198))))
+                    .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TXT_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addGroup(PL_derechaLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel1))
+                    .addGroup(PL_derechaLayout.createSequentialGroup()
+                        .addComponent(BTN_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(148, 148, 148))
         );
         PL_derechaLayout.setVerticalGroup(
             PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,9 +166,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TXT_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(BTN_entrar)
-                .addGap(36, 36, 36))
+                .addGap(53, 53, 53)
+                .addGroup(PL_derechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_entrar)
+                    .addComponent(BTN_Salir))
+                .addGap(34, 34, 34))
         );
 
         PL_BASE.add(PL_derecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 580, 360));
@@ -193,6 +212,10 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTN_entrarActionPerformed
 
+    private void BTN_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_SalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +230,7 @@ public class Login extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton BTN_Salir;
     public javax.swing.JButton BTN_entrar;
     private javax.swing.JPanel PL_BASE;
     private javax.swing.JPanel PL_derecha;

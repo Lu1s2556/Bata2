@@ -31,6 +31,7 @@ public class Pagina_Consultas extends javax.swing.JFrame {
      * Creates new form Pagina_Consultas
      */
     public Pagina_Consultas() {
+        setUndecorated(true);
         initComponents();
     }
 

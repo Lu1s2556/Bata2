@@ -19,7 +19,13 @@ public class Menu_Principal extends javax.swing.JFrame {
      * Creates new form Menu_Principal
      */
     public Menu_Principal() {
+        setUndecorated(true);
         initComponents();
+        BTN_Salir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            System.exit(0); // Cierra toda la aplicación
+        }
+        });
     }
 
     /**
@@ -39,6 +45,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        BTN_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,25 +115,38 @@ public class Menu_Principal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Dr: XXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
+        BTN_Salir.setBackground(new java.awt.Color(255, 255, 255));
+        BTN_Salir.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        BTN_Salir.setForeground(new java.awt.Color(255, 102, 102));
+        BTN_Salir.setText("Salir");
+        BTN_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(459, 459, 459)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(411, 411, 411)
-                        .addComponent(jLabel2)))
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addGap(411, 411, 411)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(459, 459, 459)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
+                .addComponent(BTN_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_Salir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -202,6 +222,10 @@ public class Menu_Principal extends javax.swing.JFrame {
         LR.setLocationRelativeTo(null);
     }//GEN-LAST:event_BTN_listaRecipesActionPerformed
 
+    private void BTN_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SalirActionPerformed
+        
+    }//GEN-LAST:event_BTN_SalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,6 +263,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Agenda;
+    private javax.swing.JButton BTN_Salir;
     private javax.swing.JButton BTN_consulta;
     private javax.swing.JButton BTN_listaRecipes;
     public javax.swing.JButton BTN_paciente;

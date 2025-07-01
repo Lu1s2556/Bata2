@@ -15,6 +15,7 @@ public class listaPacientes extends javax.swing.JFrame {
 
     
     public listaPacientes() {
+        setUndecorated(true);
         initComponents();
         cargarPacientesEnTabla();
     }
