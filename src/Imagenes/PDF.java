@@ -24,12 +24,12 @@ public class PDF {
 
     public void generarPDF(String cedula) {
         try {
-            String nombreDoctor = "Dr. Juan Pérez";
+            String nombreDoctor = "Dr. XXXXXXXXXXXXXXXXXXXXXXXXXXX";
             String nombrePaciente = "";
             String recipe = "";
             String idRecipe = "";
 
-            // === Obtener nombre del paciente ===
+            // Obtener nombre del paciente
             String SQLnombre = "SELECT nombre FROM paciente WHERE cedula = ?";
             try (PreparedStatement psNombre = cn.prepareStatement(SQLnombre)) {
                 psNombre.setString(1, cedula);
@@ -41,7 +41,7 @@ public class PDF {
                 }
             }
 
-            // === Obtener receta e ID ===
+            //  Obtener receta y ID
             String SQLrecipe = "SELECT id_recipe, recipe FROM recipe WHERE cedula = ? ORDER BY id_recipe DESC LIMIT 1";
 
             try (PreparedStatement psRecipe = cn.prepareStatement(SQLrecipe)) {
@@ -67,7 +67,7 @@ public class PDF {
             float zonaIzq = margenLineas + margenTexto;
             float zonaDer = w - margenLineas - margenTexto;
 
-            // === Líneas azules ===
+            //  Líneas azules
             contenido.setStrokingColor(0, 102, 204);
             contenido.setLineWidth(4);
             contenido.moveTo(margenLineas, 20);
@@ -77,12 +77,12 @@ public class PDF {
             contenido.lineTo(w - margenLineas, h - 20);
             contenido.stroke();
 
-            // === Logo ===
+            // Logo 
             InputStream logoInput = getClass().getResourceAsStream("/Imagenes/Logo_medicontrol.png");
             PDImageXObject logo = PDImageXObject.createFromByteArray(docu, logoInput.readAllBytes(), "Logo");
             contenido.drawImage(logo, (w - 60) / 2, h - 85, 60, 60);
 
-            // === Título centrado con mayor separación ===
+            //  Título centrado con mayor separación
             float y = h - 130;
             contenido.beginText();
             contenido.setFont(PDType1Font.HELVETICA_BOLD, 22);
@@ -91,7 +91,7 @@ public class PDF {
             contenido.showText("Meditrack");
             contenido.endText();
 
-            // === Nombre del doctor ===
+            // Nombre del doctor
             y -= 35;
             contenido.beginText();
             contenido.setFont(PDType1Font.HELVETICA_BOLD, 13);
@@ -99,7 +99,7 @@ public class PDF {
             contenido.showText(nombreDoctor);
             contenido.endText();
 
-            // === Recipe centrado ===
+            // centrado del recipe
             y -= 45;
             float leading = 14;
             if (recipe != null && !recipe.isEmpty()) {
@@ -118,18 +118,19 @@ public class PDF {
                 }
             }
 
-            // === Pie con datos del paciente ===
+            //  Pie con datos del paciente
             String pie = "Paciente: " + nombrePaciente + " | C.I.: " + cedula;
             contenido.beginText();
-            contenido.setFont(PDType1Font.HELVETICA_OBLIQUE, 11);
+            contenido.setFont(PDType1Font.HELVETICA_OBLIQUE, 14);
             contenido.newLineAtOffset(zonaIzq, 30);
             contenido.showText(pie);
             contenido.endText();
 
             contenido.close();
 
-            // === Guardar con nombre dinámico ===
+            // Guardar con nombre dependiendo del id y el paciente
             String nombreLimpio = nombrePaciente.replaceAll("[^a-zA-Z0-9]", "");
+            //se uso carpeta publica para que podamos usarla todos
             String nombreArchivo = "C:\\Users\\Public\\Receta_" + nombreLimpio + "_" + idRecipe + ".pdf";
             docu.save(nombreArchivo);
             docu.close();

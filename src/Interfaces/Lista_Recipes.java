@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Interfaces;
 
 import com.formdev.flatlaf.FlatLightLaf;
@@ -9,7 +6,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import conexion.conexionSQL;
-import conexion.DAOrecipes;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -27,20 +23,17 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-/**
- *
- * @author Burrx
- */
+
 public class Lista_Recipes extends javax.swing.JFrame {
-    
+    //conexion con la base de datos y declaracion del tablemodel
     private DefaultTableModel modeloTabla;
     conexionSQL con = new conexionSQL();
     Connection cn = con.conectar();
     
 
-
+    //clase de arranque donde en este caso tiene mas utilidad para ir ajustando todo
     public Lista_Recipes() {
-        // 1) Instala el L&F y overrides ANTES de construir la GUI
+        // configuracion del estilo de la tabla con UIMANAGER
         FlatLightLaf.setup();
         UIManager.put("Table.background",             new Color(240,248,255));
         UIManager.put("Table.alternateRowBackground", new Color(224,238,238));
@@ -52,25 +45,25 @@ public class Lista_Recipes extends javax.swing.JFrame {
         UIManager.put("TableHeader.font",             new Font("Verdana", Font.BOLD, 16));
         
 
-        // 2) Carga la GUI (NetBeans auto‐gen)
+        // arranque de la ventana y eliminacion de barra de windows
         setUndecorated(true);
         initComponents();
         SwingUtilities.updateComponentTreeUI(this);
 
-        // 3) Inicializa el modelo y lo asigna a la tabla
+        // se Inicializa el modelo y se asigna a la tabla con los datos a cargar
         modeloTabla = new DefaultTableModel();
         modeloTabla.setColumnIdentifiers(
             new Object[]{"ID Receta", "Cédula", "Nombre Paciente"}
         );
         Tabla_recipes.setModel(modeloTabla);
 
-        // 4) Aplica estilo “metro” a la tabla
+        // se llama a funcion que aplica estilo a la tabla
         configurarTabla();
 
-        // 5) Carga los datos desde la base
+        // funcion para cargar los datos
         cargarDatosRecetas();
 
-        // 6) Listener para selección de fila
+        // Listener para que seleccione una opcion de la tabla
         Tabla_recipes.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 abrirPaginaConsulta();
@@ -78,6 +71,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
         });
     }
     
+    //Funcion para cargar los datos desde la BD a la tabla
     private void cargarDatosRecetas() {
      // Ahora modeloTabla nunca es null
         modeloTabla.setRowCount(0);
@@ -86,8 +80,8 @@ public class Lista_Recipes extends javax.swing.JFrame {
             SELECT r.id_recipe,
                    r.cedula,
                    CONCAT(p.nombre, ' ', p.apellido) AS nombre
-              FROM recipe r
-              JOIN paciente p ON r.cedula = p.cedula
+                    FROM recipe r
+                    JOIN paciente p ON r.cedula = p.cedula
             """;
         try (PreparedStatement ps = cn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -109,7 +103,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
         int fila = Tabla_recipes.getSelectedRow();
         if (fila < 0) return; // nada seleccionado
 
-        // OJO: si tienes RowSorter activo, traduce índice de vista a modelo:
+        //traduce índice de vista a modelo:
         fila = Tabla_recipes.convertRowIndexToModel(fila);
 
         int idRecipe = (int) modeloTabla.getValueAt(fila, 0);
@@ -119,9 +113,9 @@ public class Lista_Recipes extends javax.swing.JFrame {
         pagina.setLocationRelativeTo(this);
         pagina.setVisible(true);
         this.dispose();
-        // opcional: this.dispose();  // cierra la lista
     }
     
+    //configuracion del estilo metro de la tabla
     private void configurarTabla() {
         // Encabezado
         JTableHeader header = Tabla_recipes.getTableHeader();
@@ -129,10 +123,10 @@ public class Lista_Recipes extends javax.swing.JFrame {
         header.setForeground(Color.WHITE);
         header.setFont(new Font("Segoe UI", Font.BOLD, 16));
 
-        // Renderer “striped”
+        // Renderer de cada fila
         TableCellRenderer metroRenderer = new DefaultTableCellRenderer() {
             private final Color EVEN  = new Color(240,248,255);
-            private final Color ODD   = new Color(224,238,238);
+            private final Color ODD   = new Color(240,248,255);
             private final Color SEL   = new Color(30,136,229);
             @Override
             public Component getTableCellRendererComponent(
@@ -166,11 +160,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
 
 
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -299,6 +289,8 @@ public class Lista_Recipes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //configuracion de busqueda automatica en el cuadro cedula
     private void TXT_filtroCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_filtroCedulaKeyReleased
        DefaultTableModel modelo = (DefaultTableModel) Tabla_recipes.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
@@ -306,7 +298,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
 
         String filtro = TXT_filtroCedula.getText().trim();
 
-        // Filtra por la columna 1 (Cédula)
+        // Filtra por la columna 1 (Cédula) delvalor escrito
         RowFilter<DefaultTableModel, Object> rf = RowFilter.regexFilter("(?i)^" + filtro, 1);
         sorter.setRowFilter(rf);
         
@@ -320,9 +312,7 @@ public class Lista_Recipes extends javax.swing.JFrame {
         mp.setLocationRelativeTo(null);
     }//GEN-LAST:event_BTN_VOLVERActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         
         FlatLightLaf.setup();
