@@ -38,10 +38,7 @@ public class Antecedentes extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         obtenerAntecedentes(cedula);
-        boton_buscar.setVisible(false);
-        txt_cedula.setVisible(false);
-        label_cedula.setVisible(false);
-        configurarBotones();
+        setLocationRelativeTo(null);
     }
     
     // Los datos en solo lectura
@@ -105,16 +102,6 @@ public class Antecedentes extends javax.swing.JFrame {
                 txt_observaciones.setText("");
             }
 
-            // Bloquear edición (solo lectura)
-            txt_nombre.setEditable(false);
-            txt_sexo.setEditable(false);
-            txt_gruposanguineo.setEditable(false);
-            txt_edad.setEditable(false);
-            txt_antecedentesmedicos.setEditable(false);
-            txt_enfermedades.setEditable(false);
-            txt_observaciones.setEditable(false);
-            txt_cedula.setEditable(false); // si lo deseas
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al cargar datos: " + e.getMessage());
         }
@@ -149,12 +136,11 @@ public class Antecedentes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Antecedentes actualizados correctamente");
         } else {
             // Si no existen, insertar
-            PreparedStatement insert = cn.prepareStatement("INSERT INTO antecedentes (id_antecedentes, cedula, historial, enfermedades, observaciones) VALUES (?, ?, ?, ?, ?)");
-            insert.setInt(1, 0);
-            insert.setString(2, cedula);
-            insert.setString(3, historial);
-            insert.setString(4, enfermedades);
-            insert.setString(5, observaciones);
+            PreparedStatement insert = cn.prepareStatement("INSERT INTO antecedentes (cedula, historial, enfermedades, observaciones) VALUES (?, ?, ?, ?)");
+            insert.setString(1, cedula);
+            insert.setString(2, historial);
+            insert.setString(3, enfermedades);
+            insert.setString(4, observaciones);
             insert.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "Antecedentes guardados correctamente");
