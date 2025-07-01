@@ -411,12 +411,11 @@ public class Antecedentes extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Informacion actualizada correctamente");
             }else {
                 //Primer guardado de antecedentes (cuando todo esta vacio)
-                PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (id_antecedentes, cedula, historial, enfermedades, observaciones) values (?, ?, ?, ?, ?)");
-                psInsert.setInt(1,0);
-                psInsert.setString(2,cedula);
-                psInsert.setString(3,ant_med);
-                psInsert.setString(4,enfermedades);
-                psInsert.setString(5,observaciones);
+                PreparedStatement psInsert = cn.prepareStatement("INSERT INTO antecedentes (cedula, historial, enfermedades, observaciones) values (?, ?, ?, ?)");
+                psInsert.setString(1,cedula);
+                psInsert.setString(2,ant_med);
+                psInsert.setString(3,enfermedades);
+                psInsert.setString(4,observaciones);
                 psInsert.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Antecedentes guardados correctamente");
             }
