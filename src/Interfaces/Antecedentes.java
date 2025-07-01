@@ -43,6 +43,7 @@ public class Antecedentes extends javax.swing.JFrame {
         boton_buscar = new javax.swing.JButton();
         txt_cedula = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
+        Volverbtn = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         label_edad = new javax.swing.JLabel();
         label_sexo = new javax.swing.JLabel();
@@ -60,7 +61,6 @@ public class Antecedentes extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_observaciones = new javax.swing.JTextArea();
         boton_guardar = new javax.swing.JButton();
-        Volverbtn = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,17 +74,17 @@ public class Antecedentes extends javax.swing.JFrame {
         Label_Titulo.setText("Antecedentes");
 
         label_cedula.setBackground(new java.awt.Color(255, 255, 255));
-        label_cedula.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        label_cedula.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         label_cedula.setForeground(new java.awt.Color(255, 255, 255));
         label_cedula.setText("Cedula");
 
         label_nombre.setBackground(new java.awt.Color(255, 255, 255));
-        label_nombre.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        label_nombre.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         label_nombre.setForeground(new java.awt.Color(255, 255, 255));
         label_nombre.setText("Nombre");
 
         boton_buscar.setBackground(new java.awt.Color(255, 255, 255));
-        boton_buscar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        boton_buscar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         boton_buscar.setForeground(new java.awt.Color(76, 207, 225));
         boton_buscar.setText("Buscar");
         boton_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,12 +94,23 @@ public class Antecedentes extends javax.swing.JFrame {
         });
 
         txt_cedula.setBackground(new java.awt.Color(255, 255, 255));
-        txt_cedula.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        txt_cedula.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         txt_cedula.setForeground(new java.awt.Color(76, 207, 225));
 
         txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nombre.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        txt_nombre.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(76, 207, 225));
+
+        Volverbtn.setBackground(new java.awt.Color(255, 255, 255));
+        Volverbtn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Volverbtn.setForeground(new java.awt.Color(76, 207, 225));
+        Volverbtn.setText("VOLVER");
+        Volverbtn.setBorder(null);
+        Volverbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,18 +128,23 @@ public class Antecedentes extends javax.swing.JFrame {
                             .addComponent(txt_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                             .addComponent(txt_nombre))
                         .addGap(18, 18, 18)
-                        .addComponent(boton_buscar))
+                        .addComponent(boton_buscar)
+                        .addContainerGap(147, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(Label_Titulo)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Label_Titulo)
+                        .addGap(82, 82, 82)
+                        .addComponent(Volverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Label_Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Titulo)
+                    .addComponent(Volverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,24 +162,24 @@ public class Antecedentes extends javax.swing.JFrame {
                         .addGap(23, 23, 23))))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 120));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 120));
 
         jPanel2.setBackground(new java.awt.Color(177, 234, 242));
 
         label_edad.setBackground(new java.awt.Color(255, 255, 255));
         label_edad.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         label_edad.setForeground(new java.awt.Color(255, 255, 255));
-        label_edad.setText("Edad");
+        label_edad.setText("Edad:");
 
         label_sexo.setBackground(new java.awt.Color(255, 255, 255));
         label_sexo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         label_sexo.setForeground(new java.awt.Color(255, 255, 255));
-        label_sexo.setText("Sexo");
+        label_sexo.setText("Sexo:");
 
         label_gruposanguineo.setBackground(new java.awt.Color(255, 255, 255));
         label_gruposanguineo.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         label_gruposanguineo.setForeground(new java.awt.Color(255, 255, 255));
-        label_gruposanguineo.setText("Grupo Sanguineo");
+        label_gruposanguineo.setText("Grupo Sanguineo:");
 
         txt_edad.setBackground(new java.awt.Color(255, 255, 255));
         txt_edad.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -214,7 +230,7 @@ public class Antecedentes extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txt_observaciones);
 
         boton_guardar.setBackground(new java.awt.Color(255, 255, 255));
-        boton_guardar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        boton_guardar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         boton_guardar.setForeground(new java.awt.Color(76, 207, 225));
         boton_guardar.setText("Guardar");
         boton_guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -223,67 +239,51 @@ public class Antecedentes extends javax.swing.JFrame {
             }
         });
 
-        Volverbtn.setBackground(new java.awt.Color(255, 255, 255));
-        Volverbtn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        Volverbtn.setForeground(new java.awt.Color(76, 207, 225));
-        Volverbtn.setText("VOLVER");
-        Volverbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Volverbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverbtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(label_edad)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_antecedentesmedicos)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(label_edad)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(label_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(label_sexo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(label_gruposanguineo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_gruposanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(36, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(label_observaciones)
-                        .addGap(246, 246, 246))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(boton_guardar)
-                        .addGap(110, 110, 110)
-                        .addComponent(Volverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(label_antecedentesmedicos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label_enfermedades)
-                .addGap(88, 88, 88))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label_enfermedades)
+                        .addGap(129, 129, 129))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(164, 164, 164))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(boton_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(257, 257, 257))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(label_observaciones)
+                        .addGap(267, 267, 267))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,23 +299,21 @@ public class Antecedentes extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_antecedentesmedicos)
-                    .addComponent(label_enfermedades))
+                    .addComponent(label_enfermedades, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_guardar)
-                    .addComponent(Volverbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(boton_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 610, 420));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 640, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
