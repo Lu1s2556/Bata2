@@ -30,6 +30,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         this.ventana = ventana;
     }
     
+    private JButton historial_btn;
     private JButton modificar_btn;
     private JButton actualizar_btn;
     private listaPacientes padre;
@@ -157,6 +158,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         private void configurarBotones() {
         modificar_btn = new JButton("Modificar");
         actualizar_btn = new JButton("Actualizar");
+        historial_btn = new JButton("Antecedentes");
         
         Font fuenteBoton = new Font("Verdana", Font.BOLD, 12);
         Color fondo = new Color(255, 255, 255);
@@ -174,6 +176,12 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         actualizar_btn.setBackground(fondo);
         actualizar_btn.setForeground(texto);
         actualizar_btn.setBorder(borde);
+        
+        // Estilos para el botón Actualizar
+        historial_btn.setFont(fuenteBoton);
+        historial_btn.setBackground(fondo);
+        historial_btn.setForeground(texto);
+        historial_btn.setBorder(borde);
 
         // Acción del boton modificar
         modificar_btn.addActionListener(e -> {
@@ -196,12 +204,24 @@ public class Agregar_Paciente extends javax.swing.JFrame {
             }
         });
         
-        // Posiciones y limites de los botones
-        modificar_btn.setBounds(130, 50, 130, 30);
-        actualizar_btn.setBounds(130, 50, 130, 30);
+        // Acción del boton antecedentes
+        historial_btn.addActionListener(e -> {
+            String cedula = ci_txt.getText();
+            Antecedentes an = new Antecedentes(cedula);
+            this.dispose();
+            an.setVisible(true);
+            an.pack();
+            an.setLocationRelativeTo(null);
+        });
         
-        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
-        jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
+        // Posiciones y limites de los botones
+        modificar_btn.setBounds(50, 350, 80, 30);
+        actualizar_btn.setBounds(50, 350, 80, 30);
+        historial_btn.setBounds(250, 350, 100, 30);
+        
+        jPanel1.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 80, 30));
+        jPanel1.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 80, 30));
+        jPanel1.add(historial_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 100, 30));
 
         modificar_btn.setVisible(true);
         actualizar_btn.setVisible(false);
@@ -265,7 +285,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(178, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(125, 125, 125))
         );
@@ -277,7 +297,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 70));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -459,7 +479,7 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,11 +548,11 @@ public class Agregar_Paciente extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "NO SE PUDO AGREGAR EL PACIENTE");
         }
-        listaPacientes lp = new listaPacientes();
+        Antecedentes an = new Antecedentes();
         this.dispose();
-        lp.setVisible(true);
-        lp.pack();
-        lp.setLocationRelativeTo(null);
+        an.setVisible(true);
+        an.pack();
+        an.setLocationRelativeTo(null);
         
         /*
         String cedula = ci_txt.getText();

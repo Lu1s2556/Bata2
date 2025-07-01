@@ -10,8 +10,15 @@ import java.sql.*;
 import conexion.conexionSQL;
 import java.sql.Connection;
 import conexion.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
 /**
  *
@@ -26,6 +33,187 @@ public class Antecedentes extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    public Antecedentes(String cedula) {
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        obtenerAntecedentes(cedula);
+        boton_guardar.setVisible(false);
+        boton_buscar.setVisible(false);
+        txt_cedula.setVisible(false);
+        label_cedula.setVisible(false);
+        configurarBotones();
+        soloLectura();
+    }
+    
+    // Los datos en solo lectura
+    private void soloLectura() {
+        // Deshabilitar edición en los JTextField
+        txt_cedula.setEditable(false);
+        txt_nombre.setEditable(false);
+        txt_sexo.setEditable(false);
+        txt_gruposanguineo.setEditable(false);
+        txt_edad.setEditable(false);
+        txt_antecedentesmedicos.setEditable(false);
+        txt_enfermedades.setEditable(false);
+        txt_observaciones.setEditable(false);
+    }
+    
+    private void activarEdicion(){
+        txt_antecedentesmedicos.setEditable(true);
+        txt_enfermedades.setEditable(true);
+        txt_observaciones.setEditable(true);
+    }
+    
+    private void obtenerAntecedentes(String cedula){
+        conexionSQL con = new conexionSQL();
+        Connection cn = con.conectar();
+        String sql = "SELECT * FROM paciente WHERE cedula = ?";
+
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setString(1, cedula);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+            txt_cedula.setText(rs.getString("cedula"));
+            txt_nombre.setText(rs.getString("nombre") + " " + rs.getString("apellido"));
+            txt_sexo.setText(rs.getString("sexo"));
+            txt_gruposanguineo.setText(rs.getString("grupo sanguineo"));
+
+            Date fechaNac = rs.getDate("fecha de nacimiento");
+            if (fechaNac != null) {
+                LocalDate nacimiento = fechaNac.toLocalDate();
+                int edad = Period.between(nacimiento, LocalDate.now()).getYears();
+                txt_edad.setText(String.valueOf(edad));
+            } else {
+                txt_edad.setText("");
+            }
+            } else {
+                JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+            }
+
+            // Buscar antecedentes
+            PreparedStatement ps2 = cn.prepareStatement("SELECT historial, enfermedades, observaciones FROM antecedentes WHERE cedula = ?");
+            ps2.setString(1, cedula);
+            ResultSet rs2 = ps2.executeQuery();
+
+            if (rs2.next()) {
+                txt_antecedentesmedicos.setText(rs2.getString("historial"));
+                txt_enfermedades.setText(rs2.getString("enfermedades"));
+                txt_observaciones.setText(rs2.getString("observaciones"));
+            } else {
+                txt_antecedentesmedicos.setText("");
+                txt_enfermedades.setText("");
+                txt_observaciones.setText("");
+            }
+
+            // Bloquear edición (solo lectura)
+            txt_nombre.setEditable(false);
+            txt_sexo.setEditable(false);
+            txt_gruposanguineo.setEditable(false);
+            txt_edad.setEditable(false);
+            txt_antecedentesmedicos.setEditable(false);
+            txt_enfermedades.setEditable(false);
+            txt_observaciones.setEditable(false);
+            txt_cedula.setEditable(false); // si lo deseas
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar datos: " + e.getMessage());
+        }
+    }
+    
+    private void actualizarAntecedentes(){
+        String cedula = txt_cedula.getText().trim();
+    String historial = txt_antecedentesmedicos.getText().trim();
+    String enfermedades = txt_enfermedades.getText().trim();
+    String observaciones = txt_observaciones.getText().trim();
+
+    try {
+        String url = "jdbc:mysql://localhost:3306/medicontrol";
+        String usuario = "medicontrol";
+        String pass = "bata31@";
+        Connection cn = DriverManager.getConnection(url, usuario, pass);
+
+        // Verificar si existen antecedentes
+        PreparedStatement pst = cn.prepareStatement("SELECT * FROM antecedentes WHERE cedula = ?");
+        pst.setString(1, cedula);
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()) {
+            // Si existen, actualizar
+            PreparedStatement update = cn.prepareStatement("UPDATE antecedentes SET historial = ?, enfermedades = ?, observaciones = ? WHERE cedula = ?");
+            update.setString(1, historial);
+            update.setString(2, enfermedades);
+            update.setString(3, observaciones);
+            update.setString(4, cedula);
+            update.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Antecedentes actualizados correctamente");
+        } else {
+            // Si no existen, insertar
+            PreparedStatement insert = cn.prepareStatement("INSERT INTO antecedentes (id_antecedentes, cedula, historial, enfermedades, observaciones) VALUES (?, ?, ?, ?, ?)");
+            insert.setInt(1, 0);
+            insert.setString(2, cedula);
+            insert.setString(3, historial);
+            insert.setString(4, enfermedades);
+            insert.setString(5, observaciones);
+            insert.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Antecedentes guardados correctamente");
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al actualizar antecedentes: " + e.getMessage());
+    }
+    }
+    
+    private JButton modificar_btn;
+    private JButton actualizar_btn;
+    
+    private void configurarBotones() {
+        modificar_btn = new JButton("Modificar");
+        actualizar_btn = new JButton("Actualizar");
+
+        Font fuenteBoton = new Font("Verdana", Font.BOLD, 12);
+        Color fondo = new Color(255, 255, 255);
+        Color texto = new Color(76, 207, 225);
+        Border borde = BorderFactory.createBevelBorder(BevelBorder.RAISED);
+
+        // Estilo botón Modificar
+        modificar_btn.setFont(fuenteBoton);
+        modificar_btn.setBackground(fondo);
+        modificar_btn.setForeground(texto);
+        modificar_btn.setBorder(borde);
+
+        // Estilo botón Actualizar
+        actualizar_btn.setFont(fuenteBoton);
+        actualizar_btn.setBackground(fondo);
+        actualizar_btn.setForeground(texto);
+        actualizar_btn.setBorder(borde);
+
+        // Acción de Modificar
+        modificar_btn.addActionListener(e -> {
+            activarEdicion();
+            modificar_btn.setVisible(false);
+            actualizar_btn.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Puede modificar los antecedentes");
+        });
+
+        // Acción de Actualizar
+        actualizar_btn.addActionListener(e -> {
+            actualizarAntecedentes();
+            soloLectura();
+            actualizar_btn.setVisible(false);
+            modificar_btn.setVisible(true);
+        });
+
+        // Añadir botones al panel
+        jPanel2.add(modificar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 100, 30));
+        jPanel2.add(actualizar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 100, 30));
+
+        modificar_btn.setVisible(true);
+        actualizar_btn.setVisible(false);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
